@@ -1,0 +1,23 @@
+  <div class="back" [ngStyle]="{'background-image': 'url(' + backgroundImage + ')'}">
+
+
+  <div id="main">
+
+    <form   #myform="ngForm" (ngSubmit)="Fn_Login(myform.value) " >
+  <div id="one">
+    <input class="form-control" type="email" id="txt_Username" placeholder="Email address"  name="username" pattern="[a-zA-Z_.\d]{7,50}@[a-z\d]{4}[.][a-z]{2}" #username ="ngModel" ngModel><br><br>
+    <span class="help-block" *ngIf="show  && !username.valid ">Enter valid email</span>
+  </div>
+  <div id="two">
+    <button  class="btn btn-success"  type="submit" [disabled]="username.invalid">Login with
+      <span><img src="../../assets/images/ms_logo.png" height="20" /></span>
+    </button>
+  </div>
+
+
+    </form>
+
+  </div>
+
+
+</div>
