@@ -47,8 +47,8 @@ router.post('/',upload.single('attachment'), (req, res) => {
          service: 'outlook',
          port: 587,
          auth: {
-           user: "thanmai.chikine@g7cr.in",
-           pass: "Yashkumar27"
+           user: "******",
+           pass: "******"
            // user: process.env.EMAIL,
            // pass: process.env.PASSWORD,
          },
@@ -58,7 +58,7 @@ router.post('/',upload.single('attachment'), (req, res) => {
 
        });
        var mailOptions = {
-         from: 'thanmai.chikine@g7cr.in',
+         from: '********',
          to:cnt.email,
          subject: 'Sending Email using Node.js',
          html: `<h4>Description :  ${cnt.description}</h4>`,
