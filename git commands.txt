@@ -1,0 +1,14 @@
+Git commands:
+------------------------
+set url : git remote set-url origin git@your.git.repo.example.com:user/repository2.git
+
+create branch: git branch branchname
+
+swith ot branch: git checkout branchname
+delete branch :  git branch d branchname
+
+Go to specific folder (E:/Deployments)
+git init
+git add . (for adding all) or git add file/folder
+git commit -m "changes"
+git push origin branch/master/main
