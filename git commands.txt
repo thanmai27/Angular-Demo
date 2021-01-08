@@ -5,7 +5,7 @@ set url : git remote set-url origin git@your.git.repo.example.com:user/repositor
 create branch: git branch branchname
 
 swith ot branch: git checkout branchname
-delete branch :  git branch d branchname
+delete branch :  git branch -d branchname
 
 Go to specific folder (E:/Deployments)
 git init
