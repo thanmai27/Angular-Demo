@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-md navbar-light  fixed-top">
+    <a routerLink="" class="navbar-brand">
+        <img src="https://i.postimg.cc/nLT4rNwT/logo.png" height="50px" width="80px" alt="" srcset=""></a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <h4 class="IT">Interiors </h4>
+
+    <!-- <div class="collapse navbar-collapse" id="navbarCollapse"> -->
+    <div class="navbar-nav ml-auto">
+        <!-- <div class="follow">
+            <input type="button" class="follow_btn" (click)="onLogout()" value="Logout" />
+        </div> -->
+        <span type="button" class="material-icons logout" (click)="onLogout()">login</span>
+        <div class="tooltiptext">Logout</div>
+        <!-- <a routerLink="/userprofile"><i class="fa fa-user-circle-o icon-user" aria-hidden="true"></i></a> -->
+        <button class="btn btn-success">Offers</button>
+
+    </div>
+</nav>
+<!-- Nav Bar Ends  -->
+
+
+<div fxLayout="row" class="parent">
+    <div fxFlex="20%" class="left">
+        <div class="nav-side-menu">
+            <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+            <div class="menu-list">
+
+                <ul id="menu-content" class="menu-content collapse out">
+                    <li data-toggle="collapse" class="collapsed">
+                        <i class="fas fa-tachometer-alt fa-lg" aria-hidden="true"></i>Dashboard
+                    </li>
+
+                    <li data-toggle="collapse" routerLinkActive="active" routerLink="/myaccount" class="collapsed">
+                        <i class="fa fa-user fa-lg"></i>My Account <span class="arrow"></span>
+                    </li>
+
+                    <li data-toggle="collapse" class="collapsed" routerLinkActive="active" routerLink="/projects">
+                        <i class="fa fa-globe fa-lg"></i>My Projects<span class="arrow"></span>
+                    </li>
+
+                    <li data-toggle="collapse" class="collapsed" routerLinkActive="active" routerLink="/payments">
+                        <i class="fas fa-credit-card fa-lg"></i>Payments<span class="arrow"></span>
+                    </li>
+
+
+                    <li data-toggle="collapse" class="collapsed" routerLinkActive="active" routerLink="/receipts">
+                        <i class="fas fa-receipt fa-lg"></i>Receipts<span class="arrow"></span>
+                    </li>
+
+                    <li data-toggle="collapse" class="collapsed" routerLinkActive="active" routerLink="/contatcus">
+                        <i class="fas fa-address-card fa-lg"></i> Contact Us<span class="arrow"></span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div fxFlex="80%" class="right"></div>
+</div>
+
+
+
+<router-outlet></router-outlet>

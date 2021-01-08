@@ -1,0 +1,451 @@
+<!-- Header Nav Bar  -->
+<app-header> </app-header>
+
+
+
+<section id="hero">
+    <div class="container-fluid w3-animate-top banner">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-7 title">
+                <h2 class="line"><span class="propeden"> PropEden </span>, One Stop Solution for All</h2>
+                <!-- <button type="button" class="btn btn-warning" (click)="onSelect(ab)">Get Quote</button> -->
+                <button type="button" class="btn btn-get-quote" routerLink="/quote1">Get Quote</button>
+            </div>
+
+            <!-- </section> -->
+            <!-- connect us form -->
+            <div class="col-md-3 container border border-light cont">
+                <form #connectUsForm="ngForm" class="contact us text-center" (ngSubmit)="onSubmit(connectUsForm)">
+                    <h2 id="cu">Connect Us</h2>
+                    <mat-form-field class="name">
+                        <mat-label class="matlabel">Enter your name..</mat-label>
+                        <input type="text" #name="ngModel" [(ngModel)]="userService.selectedContact.name" name="name" id="name" matInput placeholder="Ex. Narendra modi" required [ngClass]="{ 'invalid-textbox' :connectUsForm.submitted && !name.valid}">
+                        <mat-error *ngIf="connectUsForm.submitted && !name.valid">
+                            <label class="validation-message">Name is required.</label>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label class="matlabel">Telephone</mat-label>
+                        <!-- <span matPrefix>+91 &nbsp;</span> -->
+                        <input type="numbers" #phone="ngModel" [(ngModel)]="userService.selectedContact.phone" name="phone" id="phone" matInput placeholder="123-456-7890" minlength="10" required [ngClass]="{'invalid-text' :connectUsForm.submitted && !phone.valid } ">
+                        <!-- <mat-icon matSuffix>mode_edit</mat-icon> -->
+                        <mat-error *ngIf="connectUsForm.submitted && phone.errors">
+                            <label *ngIf="phone.errors.required" class="validation-message">Phone Number required.</label>
+                            <label *ngIf="phone.errors.minlength" class="validation-message">Enter atleast 10 characters</label>
+                            <label *ngIf="phone.errors.pattern" class="validation-message">Enter only numbers.</label>
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label class="matlabel">Email</mat-label>
+                        <input type="text" #email="ngModel" [(ngModel)]="userService.selectedContact.email" name="email" id="email" matInput placeholder="Enter your email address" [pattern]="emailRegex" required [ngClass]="{ 'invalid-textbox' : connectUsForm.submitted && !email.valid} ">
+                        <mat-error *ngIf="connectUsForm.submitted && email.errors">
+                            <label *ngIf="email.errors.pattern" class="validation-message">Enter a Valid mail id</label>
+                            <label *ngIf="email.errors.required" class="validation-message">Email Id  required.</label>
+                        </mat-error>
+                    </mat-form-field>
+
+
+
+                    <mat-form-field>
+                        <mat-label class="matlabel">Location</mat-label>
+                        <input type="text" #location="ngModel" [(ngModel)]="userService.selectedContact.location" name="location" id="location" matInput placeholder="Ex.Goa-Project location..." required [ngClass]="{ 'invalid-textbox' :connectUsForm.submitted && !location.valid}">
+                        <input type="hidden" id="loc_lat" />
+                        <input type="hidden" id="loc_long" />
+                        <mat-error *ngIf="connectUsForm.submitted && !location.valid">
+                            <label class="validation-message">Location required.</label>
+                        </mat-error>
+                    </mat-form-field>
+
+
+                    <!-- <mat-checkbox class="secure-info">Secure my-info</mat-checkbox> -->
+                    <mat-checkbox class="secure-info1" [formControl]="termsFormControl" required> Accept Terms & condition's</mat-checkbox>
+                    <!-- <mat-error *ngIf="connectUsForm.submitted">
+                    <label class="validation-message">Kindly check box to proceed</label>
+                </mat-error> -->
+                    <mat-error *ngIf="connectUsForm.submitted && termsFormControl.hasError('required')">
+                        <strong>Kindly check box to proceed</strong>
+                    </mat-error>
+
+                    <div class="sub-btn">
+                        <button type="submit" value="Submit" class="btn btn-light">Connect</button>
+                        <!-- <button mat-stroked-button color="accent">Connect</button> -->
+                    </div>
+
+                    <div class="success" *ngIf="showSucessMessage">
+                        Thanks for sharing Details will get back soon!
+                    </div>
+
+                    <!-- < Error message  
+                <div class="alert" *ngIf="serverErrorMessages">
+                    {{serverErrorMessages}}
+                </div>-->
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</section>
+<!-- Connect form Ends -->
+
+
+
+
+<!-- Why us begins here-->
+<section id="why-us">
+    <div class="y-us-section w3-container-fluid w3-center w3-animate-left">
+        <div class="container-fluid whyus">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="y-us-head">
+                        <div class="y-us-title">
+                            <h2 class="wu">Why choose us <span class="q"> ?</span></h2>
+                            <h4 class="wu1">Our Company built on impressive principles of pioneering success and growth. Our values guides the business every day and ensure business for now and ever.
+                            </h4>
+                            <span class="y-us-title-border"></span>
+
+                        </div><br>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <!-- <div class="y-us-content"> -->
+                    <div class="service-3">
+                        <div class="service-box">
+                            <div class="clearfix">
+                                <div class="image"><img src='https://i.postimg.cc/3RDLWFqQ/One-stop-solution-01.png' class="yui-img" height='100px' width='100px'></div>
+                                <div class="y-us-content">
+                                    <p>ONE STOP SOLUTION</p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="service-box">
+                            <div class="clearfix">
+                                <div class="image">
+                                    <img src='https://i.postimg.cc/15KvgtvX/8-year-warranty-01.png' class="yui-img" height='100px' width='100px'>
+                                </div>
+                                <div class="y-us-content">
+                                    <p>8 + YEARS WARRANTY</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="why-choose-banner">
+                        <img src="https://images.pexels.com/photos/3563630/pexels-photo-3563630.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" height='100%' width='100%' alt="">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="y-us-contentbox">
+                        <div class="service-3">
+                            <div class="service-box">
+                                <div class="clearfix">
+                                    <div class="image">
+                                        <img src='https://i.postimg.cc/fycBfTZH/best-in-class-archetiture.png' class="yui-img" height='100px' width='100px'>
+                                    </div>
+                                    <div class="y-us-content">
+                                        <p>BEST IN CLASS ARCHITECTS</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="service-box">
+                                <div class="clearfix">
+                                    <div class="image">
+                                        <img src='https://i.postimg.cc/P5r21j74/3-D-design-01.png' class="yui-img" height='100px' width='100px'>
+                                    </div>
+                                    <div class="y-us-content">
+                                        <p>3D - DESIGNS</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="service-box">
+            <div class="clearfix ">
+                <div class="why">
+                    <div class="image">
+                        <img src="https://i.postimg.cc/3rmST9pg/45-days-warranty-01.png" class="yui-img" height='80' width='80'>
+                        <div class="y-us-content">
+                            <p>45 DAYS OR WE PAY YOUR RENT</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+
+<!-- Three Steps of Propeden -->
+<section id="steps">
+    <!-- <div class="col-md-12">
+        <div class="row">
+            <div class="contentofsteps">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="https://i.postimg.cc/pXv0X8Y3/Design-01.png" alt="" srcset="" height="200px" width="200px">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="https://i.postimg.cc/hGYyS5p0/Discover-01.png" alt="" srcset="" height="200px" width="200px">
+                    </div>
+                    <div class="col-md-4">
+                        <img src="https://i.postimg.cc/GtwXDs08/Move-in-01.png" alt="" srcset="" height="200px" width="200px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="stepsheading">
+        Three Steps for Perfect Interiors with Us!
+    </div>
+
+    <span class="y-us-steps-border"></span>
+
+    <mat-horizontal-stepper>
+        <mat-step label="DESIGN" state="phone">
+            <p id="step1p">Design is intelligence made visible</p>
+            <div class="step1img">
+                <!--  <button mat-button matStepperNext>Next</button> -->
+                <img src="https://i.postimg.cc/pXv0X8Y3/Design-01.png" alt="" srcset="" height="200px" width="200px">
+
+            </div>
+        </mat-step>
+        <mat-step label="DISCOVER" state="chat">
+            <p id="step2p">The only joy in the world is to begin</p>
+            <div class="step2img">
+                <!-- <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext class="stepsnxt"> Next</button> -->
+                <img src="https://i.postimg.cc/hGYyS5p0/Discover-01.png" alt="" srcset="" height="200px" width="200px">
+
+            </div>
+        </mat-step>
+        <mat-step label="MOVE IN">
+            <p id="step3p">Move out to your comfort zone. ... </p>
+            <div class="step3img">
+                <img src="https://i.postimg.cc/GtwXDs08/Move-in-01.png" alt="" srcset="" height="200px" width="200px">
+            </div>
+        </mat-step>
+
+        <!-- Icon overrides. -->
+        <ng-template matStepperIcon="phone">
+            <mat-icon>arrow_right_alt</mat-icon>
+        </ng-template>
+        <ng-template matStepperIcon="chat">
+            <mat-icon>arrow_right_alt</mat-icon>
+        </ng-template>
+    </mat-horizontal-stepper>
+</section>
+
+
+
+<!-- Our brands  -->
+<h1 class="ob">Our Brands </h1>
+<span class="y-us-brands-border"></span>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="carousel slide" id="carouselExample" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item  active">
+                        <div class="row">
+
+                            <div class="col-md-2 col-xs-4">
+                                <img src="data:image/png;base64,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"
+                                    alt="Image" class="d-block" height="100" width="100">
+                            </div>
+
+                            <div class="col-md-2 col-xs-4">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Godrej_Logo.svg/1024px-Godrej_Logo.svg.png" alt="Image" class="d-block" height="100" width="100">
+                            </div>
+
+                            <div class="col-md-2 col-xs-4">
+                                <img src="https://seeklogo.com/images/H/havells-logo-34BA153203-seeklogo.com.png" alt="Image" class="d-block" height="100" width="100">
+                            </div>
+
+                            <div class="col-md-2 col-xs-4">
+                                <img src="https://logolist.ru/uploads/posts/2016-03/0_hettich_logo.jpg" alt="Image" class="d-block" height="100" width="100">
+                            </div>
+
+                            <div class="col-md-2 col-xs-4">
+                                <img src="https://seeklogo.com/images/G/greenply-logo-469D8F2DFE-seeklogo.com.png" alt="Image" class="d-block" height="100" width="100">
+                            </div>
+
+                            <div class="col-md-2 col-xs-2">
+                                <img src="https://seekvectorlogo.net/wp-content/uploads/2018/12/berger-paints-vector-logo.png" alt="Image" class="d-block" height="100" width="100">
+                            </div>
+
+                        </div>
+                        <!--row-->
+                    </div>
+                    <!--item-->
+
+                    <div class="carousel-item ">
+                        <div class="row">
+
+                            <div class="col-md-2 col-xs-4">
+                                <img src="https://images.financialexpress.com/2017/04/Jaguar-Group-IE.jpg" alt="Image" class="d-block" height="100" width="100">
+                            </div>
+
+                            <div class="col-md-2 col-xs-4">
+                                <img src="https://img.etimg.com/thumb/msid-58220023,width-1200,height-900/industry/cons-products/durables/parryware-shankara-building-team-up-for-product-display.jpg" alt="Image" height="100" width="100">
+                            </div>
+
+
+                            <div class="col-md-2 col-xs-4">
+                                <img src="https://p7.hiclipart.com/preview/584/775/767/window-kitchen-furniture-ebco-private-limited-curtain-window-thumbnail.jpg" alt="Image" class="d-block" height="100" width="100">
+                            </div>
+
+                            <div class="col-md-2 col-xs-4">
+                                <img src="data:image/png;base64,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"
+                                    alt="Image" class="d-block" height="100" width="100">
+                            </div>
+
+                            <div class="col-md-2 col-xs-4">
+                                <img src="https://kohler.scene7.com/is/image/Kohler/KohlerLogoImage?$CorpSecondary$&crop=110,0,23778,16000&wid=590&hei=397" alt="Image" height="100" width="100">
+                            </div>
+
+                            <div class="col-md-2 col-xs-4">
+                                <img src="data:image/png;base64,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"
+                                    alt="Image" class="d-block" height="100" width="100">
+                            </div>
+
+                        </div>
+                        <!-- row-->
+                    </div>
+                    <!--item-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Brand Ends  -->
+<br>
+<br>
+<br>
+
+<!-- Our Service  -->
+<div class="container-fluid ourserve">
+    <h1 class="our">Our Services</h1>
+    <mat-tab-group mat-align-tabs="center" mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4">
+        <div class="col-md-12">
+            <div class="row">
+                <mat-tab label="Residential">
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3 osimg">
+                                <img src="https://i.postimg.cc/y6w6R7hf/kitchen.png" class="osimg" height="80" width="80">
+                                <p class="os">Kitchen</p>
+                            </div>
+
+                            <div class="col-md-3 osimg">
+                                <img src="https://i.postimg.cc/4yX5LDVj/interior-design.png" class="osimg" height="80" width="80">
+                                <p class="os" style="text-align: center">Furnicher</p>
+                            </div>
+
+                            <div class="col-md-3 osimg">
+                                <img src="https://i.postimg.cc/qMPtp8Zv/Wardrobe-propedeninteriors.png" class="osimg" height="80" width="80">
+                                <p class="os" style="text-align: center">Wardrobes</p>
+                            </div>
+
+                            <div class="col-md-3 osimg">
+                                <img src="https://i.postimg.cc/HLQhkD0P/dinner-propedeninteriors-1.png" class="osimg" height="80" width="80">
+                                <p class="os">Dining Room</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3 osimg">
+                                <img src="https://i.postimg.cc/L5ZHWWSB/Living-Room-propedeninteriors.png" class="osimg" height="80" width="80">
+                                <p class="os" style="text-align: center;">Living Room</p>
+                            </div>
+
+                            <div class="col-md-3 osimg">
+                                <img src="https://i.postimg.cc/1t7c9Jdj/Tvunit-propedeninteriors.png" class="osimg" height="80" width="80">
+                                <p class="os" style="text-align: center;">TV Cabinet</p>
+                            </div>
+
+                            <div class="col-md-3 osimg">
+                                <img src="https://i.postimg.cc/X7SxXDJR/POP.png" class="osimg" height="80" width="80">
+                                <p class="os" style="text-align: center;">POP</p>
+                            </div>
+
+                            <div class="col-md-3 osimg">
+                                <img src="https://i.postimg.cc/MHPQ0Hw3/Painting-propedeninteriors.png" class="osimg" height="80" width="80">
+                                <p class="os" style="text-align: center;">Painting</p>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+            </div>
+            <mat-tab label="Commercial">
+
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-3 osimg"><img src="https://i.postimg.cc/DZ3HFftN/work-space.png" class="osimg" height="80" width="80">
+                            <p class="os" style="text-align: center;">Work Space</p>
+                        </div>
+
+                        <div class="col-md-3 osimg">
+                            <img src="https://i.postimg.cc/QxC62WFt/Smart-integrations-propedeninteriors.png" class="osimg" height="80" width="80">
+                            <p class="os" style="text-align: center;">Integrations</p>
+                        </div>
+
+                        <div class="col-md-3 osimg">
+                            <img src="https://i.postimg.cc/zXhhHJM7/multiutility-propedeninteriors.png" class="osimg" height="80" width="80">
+                            <p class="os" style="text-align:center"> Multi Spaces </p>
+                        </div>
+
+                        <div class="col-md-3 osimg">
+                            <img src="https://i.postimg.cc/DZ3HFftN/work-space.png" class="osimg" height="80" width="80">
+                            <p class="os" style="text-align:center">Plug and Play</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3 osimg">
+                            <img src="https://i.postimg.cc/Tw99Sngt/hotel.png" class="osimg" height="80" width="80">
+                            <p class="os" style="text-align: center;">Hotel</p>
+                        </div>
+
+                        <div class="col-md-3 osimg">
+                            <img src="https://i.postimg.cc/pr3n1dG0/hospital.png" class="osimg" height="80" width="80">
+                            <p class="os" style="text-align: center;">Hospital</p>
+                        </div>
+
+                        <div class="col-md-3 osimg"><img src="https://i.postimg.cc/7Y7Vrv3C/kiosk.png" class="osimg" height="80" width="80">
+                            <p class="os" style="text-align:center"> Show Rooms</p>
+                        </div>
+
+                        <div class="col-md-3 osimg">
+                            <img src="https://i.postimg.cc/MHPQ0Hw3/Painting-propedeninteriors.png" class="osimg" height="80" width="80">
+                            <p class="os" style="text-align: center;">Painting</p>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+        </div>
+    </mat-tab-group>
+</div>
+
+<!-- Footer  -->
+<app-footer></app-footer>

@@ -1,0 +1,88 @@
+<div class="container-fluid">
+  <br>
+  <button id="danger" class="btn btn-danger"  (click)="home()">logout</button>
+
+  <div class="row">
+    <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)" ngNativeValidate>
+
+      <div class="row">
+        <div class="col-md-12">
+          <input class="form-control" type="hidden" name="_id" #_id="ngModel" [(ngModel)]=" leaveService. selectedLeave._id">
+        </div>
+      </div>
+
+      
+      <div class="row">
+        <div class="col-md-12">
+          <label>Name: </label>
+          <input class="form-control" type="text"  mixlength="5" maxlength="10"name="empName" #name="ngModel" [(ngModel)]="userName" readonly>
+        </div>
+      </div>
+
+      
+      <div class="row">
+        <div class="col-md-12">
+         
+          <label>Id: </label>
+          <input  class="form-control"  mixlength="4" maxlength="4" type="text" name="empId" #name="ngModel" [(ngModel)]="empId" readonly >
+        </div>
+      </div>
+
+      
+      <div class="row">
+        <div class="col-md-12">  <label>Reason:</label>
+          <input  class="form-control" type="text"   mixlength="5" maxlength="10"name="reasonLeave" #name="ngModel" [(ngModel)]="leaveService. selectedLeave.reasonLeave" required>
+        </div>
+      </div>
+
+      
+      <div class="row">
+        <div class="col-md-12">
+          <label>From:</label>
+         <input  class="form-control"  type="date" name="leaveFrom"#name="ngModel" [(ngModel)]="leaveService. selectedLeave.leaveFrom" required>
+        </div>
+      </div>
+
+      
+      <div class="row">
+        <div class="col-md-12">
+          <label>To:</label>
+          <input class="form-control"  type="date" name="leaveTo" #name="ngModel" [(ngModel)]="leaveService. selectedLeave.leaveTo" required>
+        </div>
+      </div> <br>
+
+      <div class="row">
+        <label>Description:</label>
+
+        <div class="col-md-12">
+          <textarea  name="description"  minlength="5" maxlength="30" #name="ngModel" [(ngModel)]="leaveService. selectedLeave.description" placeholder="Description" required></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-primary" type="submit" >Submit</button>
+          <button id="warn" class="btn btn-warning" type="button" (click)="resetForm(employeeForm)">Reset</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+
+<input class="form-control"  type="hidden" name="status" value="" #name="ngModel" [(ngModel)]="leaveService. selectedLeave.status">
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col-md-12">
+
+<input class="form-control"  type="hidden" name="message" value="" #name="ngModel" [(ngModel)]="leaveService. selectedLeave.message">
+        </div>
+      </div>
+    </form>
+    
+    </div>
+  </div>
+
+  

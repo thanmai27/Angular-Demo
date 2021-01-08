@@ -1,0 +1,168 @@
+/* *:focus {
+    outline: none;
+}
+
+.right .loginwith {
+    display: block;
+    margin-bottom: 40px;
+    font-size: 28px;
+    color: #FFF;
+    text-align: center;
+}
+
+button.social-signin {
+    margin-bottom: 20px;
+    width: 220px;
+    height: 36px;
+    border: none;
+    border-radius: 2px;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+button.social-signin:hover,
+button.social-signin:focus {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: 0.2s ease;
+}
+
+button.social-signin:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    transition: 0.2s ease;
+}
+
+button.social-signin.facebook {
+    background: #32508E;
+}
+
+button.social-signin.twitter {
+    background: #55ACEE;
+}
+
+button.social-signin.google {
+    background: #DD4B39;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    padding: 4px;
+    width: 220px;
+    height: 32px;
+    border: none;
+    border-bottom: 1px solid #AAA;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus {
+    border-bottom: 2px solid #8cc614;
+    color: #8cc614;
+    transition: 0.2s ease;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    margin-top: 28px;
+    width: 120px;
+    height: 32px;
+    background: #8cc614;
+    border: none;
+    border-radius: 2px;
+    color: #FFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.1s ease;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input[type="reset"]:hover,
+input[type="reset"]:focus {
+    opacity: 0.8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: 0.1s ease;
+}
+
+input[type="submit"]:active {
+    opacity: 1;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    transition: 0.1s ease;
+}
+
+input[type=text].invalid-textbox,
+input[type=email].invalid-textbox,
+input[type=tel].invalid-textbox,
+input[type=password].invalid-textbox {
+    border-bottom: 2px solid #ed5558;
+} */
+
+.email {
+    padding: 5px 0px;
+}
+
+.sign {
+    background: rgb(138, 197, 62);
+    border: none;
+    color: #fff;
+    padding: 10px 50px;
+}
+
+.btn-signb {
+    background: rgb(138, 197, 62);
+    border: none;
+    margin: 0px 10px;
+    color: #fff;
+    padding: 10px 50px;
+}
+
+.signup {
+    margin: 20px 0px;
+}
+
+.input-container {
+    display: -ms-flexbox;
+    /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.icon {
+    padding: 10px;
+    background: rgb(138, 197, 62);
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+
+.input-field:focus {
+    border: 2px solid rgb(138, 197, 62);
+}
+
+input[type=text].invalid-textbox,
+input[type=email].invalid-textbox,
+input[type=tel].invalid-textbox,
+input[type=password].invalid-textbox {
+    border-bottom: 2px solid #ed5558;
+}

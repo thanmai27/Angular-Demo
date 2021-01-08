@@ -1,0 +1,41 @@
+<button id="logout" (click)="logOut()">goto Home</button>
+<form #employeeForm="ngForm"  (ngSubmit)="onSubmit(employeeForm)">
+<br><br>
+<div class="col-md-12">
+    <table class="table table-bordered" id="table">
+        <thead>
+            <tr>
+                <th>Employee_Name</th>
+                <th>Employee_ID</th>
+                <th>Reason</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Description</th>
+                <th>Status</th>
+
+
+
+            </tr>
+        </thead>
+        <tr *ngFor="let lev of leaveService.leaves">
+            <td>{{lev.empName}}</td>
+            <td>{{lev.empId}}</td>
+            <td>{{lev.reasonLeave}}</td>
+            <td>{{lev.leaveFrom}}</td>
+            <td>{{lev.leaveTo}}</td>
+            <td>{{lev.description}}</td>
+         <td>{{lev.status}}</td>
+
+
+
+
+          
+        </tr>
+    </table>
+    
+</div>
+
+</form>
+
+<h3>Note:</h3><span>If LEave has rejected</span>
+<a href="employee">click here for apply new leave</a>

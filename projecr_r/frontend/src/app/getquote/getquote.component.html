@@ -1,0 +1,120 @@
+<app-header></app-header>
+<!-- Nav Bar Ends  -->
+
+<section class="text-center heading">
+    <!-- <form #connectUsForm="ngForm" class="contact us text-center" (ngSubmit)=" onSubmit(connectUsForm)"> -->
+
+    <form #configform="ngForm" class="configform" (ngSubmit)="configform.valid && onSubmit(configform)">
+        <div class="container start">
+            <h1 class="heading1">TELL US YOUR CHOICE</h1>
+
+            <h4 class="step">Step 1 of 3</h4>
+            <div class="col-md-12 uc">
+                <div class="row">
+                    <div class="col-md-6 configuaration">
+                        <div class="row uc1">
+                            <div class="col-md-6 ">
+                                <h4 class="unitcon">
+                                    <mat-label>Unit Configuaration</mat-label>
+                                </h4>
+                            </div>
+
+                            <div class="col-md-6 select">
+                                <select class="browser-default custom-select" required>
+                                <option selected>Select option</option> <span class="caret"></span>
+                                <option value="1 BHK">1 BHK</option>
+                                <option value="2 BHK">2 BHK</option>
+                                <option value="3 BHK">3 BHK</option>
+                                <option value="4+ BHK">4+ BHK</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="row uc1">
+                            <div class="col-md-6">
+                                <h4 class="unitcon">
+                                    <mat-label>Built in Area</mat-label>
+                                </h4>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- <p class="built"> -->
+                                <mat-form-field class="builtarea">
+                                    <mat-label>Built in Area..</mat-label>
+                                    <input matInput placeholder="100-10000 sqft" type="text" name="builtarea" class="location">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <!-- Project Name -->
+                        <div class="row uc1">
+                            <div class="col-md-6">
+                                <h4 class="unitcon">
+                                    <mat-label>Project Name</mat-label>
+                                </h4>
+                            </div>
+
+                            <div class="col-md-6">
+                                <mat-form-field class="project-name">
+                                    <mat-label>Project Name..</mat-label>
+                                    <input matInput placeholder="Prestige Group.." class="location">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <!-- Location Input -->
+                        <div class="row uc1">
+                            <div class="col-md-6">
+                                <h4 class="unitcon">
+                                    <mat-label>Location</mat-label>
+                                </h4>
+                            </div>
+
+                            <div class="col-md-6">
+                                <mat-form-field class="location">
+                                    <mat-label>Location..</mat-label>
+                                    <input matInput placeholder="Whitefield.." class="location" id="location">
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+
+
+                        <!-- <div class="col-md-6"></div> -->
+                        <div class="row uc1">
+                            <div class="col  text-center file-field1">
+                                <div class="btn btn-upload btn-sm float-left file-field"> &nbsp; &nbsp; &nbsp;
+                                    <form enctype="multipart/form-data" method="POST">
+                                        <!-- <label for="files">Floor Plan  </label> -->
+                                        <input type="file" id="files" name="files" multiple>
+                                        <input type="submit" value="Upload">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---col-md-6 closes-->
+
+                    <div id="grey" class="col-md-6 icon">
+                        <img src="https://i.postimg.cc/sxT9Cynn/AP.jpg" alt="" srcset="">
+                        <div class="row">
+                            <div class="col-md-12 text-centerto">
+                                <p> To ensure that you get the perfect designs for your home. Wait no more! Start your home interiors journey with us.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container btn-nxt-cont">
+            <div class="row uc1">
+                <div class="col-md-2">
+                    <button (click)="back()" class="btn btn-back">Back</button>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-next" routerLink="/quote2" [disabled]="!configform.valid">Next</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

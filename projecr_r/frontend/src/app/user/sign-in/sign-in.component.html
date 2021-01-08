@@ -1,0 +1,60 @@
+<!-- <div class="container">
+    <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+        <input type="email" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Enter your email" required [pattern]="emailRegex" [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid}">
+        <div *ngIf="signInForm.submitted && email.errors?.pattern">
+            <label class="validation-message">Invalid email Address</label>
+        </div>
+        <input type="password" name="password" #password="ngModel" [(ngModel)]="model.password" placeholder="Enter your password" required minlength="8" [ngClass]="{'invalid-textbox' : signInForm.submitted && !password.valid}">
+        <div *ngIf="signInForm.submitted && password.errors?.minlength">
+            <label class="validation-message"> Minimum 8  characters</label>
+        </div>
+        <input type="submit" value="Sign Up">
+        <input type="reset" value="Reset">
+    </form>
+</div>
+
+ Error message 
+<div class="alert" *ngIf="serverErrorMessages">
+    {{serverErrorMessages}}
+</div> -->
+
+
+
+<div class="fonm">
+
+    <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)" class="fonm" style="max-width:500px;margin:auto">
+        <div class="input-container">
+            <i class="fa fa-envelope icon" aria-hidden="true" style="font-size:15px"></i>
+            <input type="email" class="input-field ng-valid" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="Enter your email" required [pattern]="emailRegex" [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid}">
+            <div *ngIf="signInForm.submitted && !email.valid">
+                <label class="validation-message">Name required.</label>
+            </div>
+        </div>
+
+
+
+        <div class="input-container">
+            <i class="fa fa-lock icon" aria-hidden="true" style="font-size:15px"></i>
+            <input type="password" class="input-field" name="password" #password="ngModel" [(ngModel)]="model.password" placeholder="Enter your password" required minlength="8" [ngClass]="{'invalid-textbox' : signInForm.submitted && !password.valid}">
+            <div *ngIf="signInForm.submitted && !password.valid">
+                <label class="validation-message"> Min. 8  characters</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-signup">Sign Up</button>
+        <button type="reset" class="btn btn-signup">Reset</button>
+    </form>
+
+    <!--
+    <div class="success" *ngIf="showSucessMessage">
+        Saved successfully
+    </div>
+     Success circle button with ripple effect -->
+
+
+    <!-- Error message -->
+    <div class="alert" *ngIf="serverErrorMessages">
+        {{serverErrorMessages}}
+    </div>
+
+</div>

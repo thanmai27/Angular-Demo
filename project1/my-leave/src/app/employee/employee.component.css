@@ -1,0 +1,75 @@
+input
+{     margin-left: 180px;
+    height: 40px;
+      width:500px;
+      border-style: solid;
+      border-radius:20px ;
+      background: transparent;
+      border-width:medium;
+    border-color:white}
+    input:focus
+    {
+        border-color:blue;
+        background-color:whitesmoke;
+    }
+textarea
+{
+       margin-left: 220px;
+       border-radius:5px ;
+       width:350px;
+
+
+
+}
+label
+{
+    margin-left: 180px;
+    color:rgb(4, 22, 5);
+
+}
+
+#danger
+{
+
+margin-left:850px;
+background-image:linear-gradient(to right, #FF512F 0%, #F09819 51%, #FF512F 100%)
+}
+
+#danger:hover
+{
+    background-position: right center;
+    background-image: linear-gradient(to right, #DAE2F8 0%, #D6A4A4 51%, #DAE2F8 100%); 
+}
+
+.container-fluid
+{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;  
+    height:100%;
+    width: 100%;
+background-image: url('../../assets/images/dc8.jpg');
+
+
+}
+button
+{
+    margin-left: 200px;
+    width: 80px;
+}
+#warn
+{
+    background-color: rgb(253, 238, 24);
+    color:purple;
+}
+#warn:hover
+{ background-color: rgb(62, 230, 62);
+    color:whitesmoke;
+    background-image: linear-gradient(to right, #56ab2f 0%, #a8e063 51%, #56ab2f 100%)
+
+
+}
+  button:hover
+  { background-color: rgb(62, 230, 62);
+}
+  

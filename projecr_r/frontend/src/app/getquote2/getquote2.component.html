@@ -1,0 +1,202 @@
+<app-header></app-header>
+
+<section class="heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 fullbox">
+                <h1 class="heading1">TELL US YOUR CHOICE</h1>
+                <h4 class="step">Step 2 of 3</h4>
+                <div class="row rq1">
+                    <div class="col-md-8 kitreq">
+                        <div class="bordertb">
+
+                            <div class="row kith-set1">
+                                <div class="col-md-2 names">
+                                    Kitchen
+                                </div>
+                                <div class="col-md-3">
+                                    Shape: &nbsp;&nbsp;
+                                    <select>
+                                        <option>U-Shape</option>
+                                        <option>L Shape</option>
+                                        <option>G Shape</option>
+                                        <option>Gallery</option>
+                                        <option>Modern</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    Type :&nbsp;&nbsp;
+                                    <select>
+                                        <option>Straight</option>
+                                        <option>Pensusillia</option>
+                                        <option>Island</option>
+                                        <option>Sea Land</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!---col-md-5 1row closes-->
+                            <div class="row kith-set2">
+                                <div class="col-md-2 names">
+                                    Wardrobe
+                                </div>
+                                <div class="col-md-3 names">
+                                    <p>
+                                        Opendoor:
+                                        <span>
+                                            <input type="button" value="-" class="minus" (click)="minus()"
+                                                name="kit-minus">
+                                            <input [value]="quantity" name="kit-quantity" class="quan">
+                                            <input type="button" value="+" class="plus" (click)="plus()"
+                                                name="kit-plus">
+                                        </span>
+                                    </p>
+
+                                </div>
+                                <div class="col-md-4 ml-0">
+                                    <p>Slidedoor:
+                                        <span class="quantity buttons_added">
+                                            <input type="button" value="-" class="minus1" (click)="minus1()"
+                                                name="kit-minus">
+                                            <input [value]="quantity1" name="kit-quantity" class="quan1">
+                                            <input type="button" value="+" class="plus1" (click)="plus1()"
+                                                name="kit-plus">
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!---col-md-5 2row closes-->
+                            <div class="row kith-set3">
+                                <div class="col-md-2 names">
+                                    Tv unit
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="quantity buttons_added q-btn1">
+                                        <input type="button" value="-" class="minus2" (click)="minus2()"
+                                            name="kit-minus">
+                                        <input [value]="quantity2" name="kit-quantity" class="quan2">
+                                        <input type="button" value="+" class="plus2" (click)="plus2()" name="kit-plus">
+                                    </span>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                            </div>
+                            <!---col-md-5 3row closes-->
+                            <div class="row kith-set4">
+                                <div class="col-md-2 names">
+                                    Study Unit
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="quantity buttons_added q-btn1">
+                                        <input type="button" value="-" class="minus3" (click)="minus3()"
+                                            name="kit-minus">
+                                        <input [value]="quantity3" name="kit-quantity" class="quan3">
+                                        <input type="button" value="+" class="plus3" (click)="plus3()" name="kit-plus">
+                                    </span>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                            </div>
+                            <!---col-md-5 4row closes-->
+                            <div class="row kith-set5">
+                                <div class="col-md-2 cro names">
+                                    Crookery
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="quantity buttons_added q-btn1">
+                                        <input type="button" value="-" class="minus4" (click)="minus4()"
+                                            name="kit-minus">
+                                        <input [value]="quantity4" name="kit-quantity" class="quan4">
+                                        <input type="button" value="+" class="plus4" (click)="plus4()" name="kit-plus">
+                                    </span>
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                            </div>
+                            <!---col-md-5 5row closes-->
+                            <div class="row kith-set6">
+                                <div class="col-md-2 names">
+                                    Pooja Unit
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="quantity buttons_added q-btn1">
+                                        <input type="button" value="-" class="minus5" (click)="minus5()"
+                                            name="kit-minus">
+                                        <input [value]="quantity5" name="kit-quantity" class="quan5">
+                                        <input type="button" value="+" class="plus5" (click)="plus5()" name="kit-plus">
+                                    </span>
+
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+                            </div>
+                            <!---col-md-5 6row closes-->
+                            <div class="row kith-set7">
+                                <div class="col-md-2 names">
+                                    Shoe Rack
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="quantity buttons_added q-btn1">
+                                        <input type="button" value="-" class="minus6" (click)="minus6()"
+                                            name="kit-minus">
+                                        <input [value]="quantity6" name="kit-quantity" class="quan6">
+                                        <input type="button" value="+" class="plus6" (click)="plus6()" name="kit-plus">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                        <!---col-md-5 7row closes-->
+
+                    </div>
+                    <!---col-md-5 closes-->
+                    <div class="col-md-4 imgkit">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-md-6 kitchenimg">
+                                    <img src="https://i.postimg.cc/QNydTFpb/500-F-265122910-f2-VWXUl-Te-UJmq-Qeofv-ITPIy-Arxc-OFfnk.jpg" alt="" srcset="" width="100%">
+                                </div>
+
+                                <div class="col-md-6 wardrobe">
+                                    <img src="https://i.postimg.cc/NGHjRgpv/Wardrobe.jpg" alt="" srcset="" width="100%">
+                                </div>
+
+                                <div class="col-md-6 tvunit">
+                                    <img src="https://i.postimg.cc/XYZHYznL/Study-unit.png" alt="" srcset="" width="100%">
+                                </div>
+
+                                <div class="col-md-6 poojaunit">
+                                    <img src="https://i.postimg.cc/HLgw1ZnV/crockery.png" alt="" srcset="" width="100%">
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Image ENds -->
+                </div>
+                <!--2nd row closes-->
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+                <div class="col-md-2 back">
+                    <button type="button" routerLink="/quote1" class="btn btn-back">Back</button>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-4 next">
+                    <button type="button" routerLink="/estimate" class="btn btn-checkest">Check Estimate</button>
+                </div>
+            </div>
+        </div>
+        <!---col 12 closes-->
+        <!-- </div> -->
+        <!---row closes-->
+    </div>
+    <!---container closes-->
+</section>

@@ -1,0 +1,34 @@
+
+<div class="container-fluid">
+    <div class="row">
+
+        
+        <div class="col-md-12">
+            <h2><u>Welcome Admin...</u></h2>
+        </div>
+
+        
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form #myform="ngForm" (ngSubmit)="Onsubmit(myform.value)" ngNativeValidate>
+
+                <div class="input-icons"> 
+                    <i class="fa fa-user icon"></i> 
+                  <input class="form-control" name="user" type="text" placeholder="Enter username"  value="" ngModel  required><link>
+
+                </div>
+
+                <div class="input-icons"> 
+                    <i class="fa fa-key icon"> </i> 
+                    <input  class="form-control" type="password" placeholder="Enter password" value="" name="pass" ngModel required ><br><br>
+
+                </div> 
+                <button  class="btn btn-primary">Submit</button>
+            
+            </form>
+
+        </div>
+    </div>
+
+</div>

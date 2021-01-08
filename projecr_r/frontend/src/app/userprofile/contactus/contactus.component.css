@@ -1,0 +1,21 @@
+.map {
+    margin: 100px;
+}
+
+h2 {
+    color: #4b4b4b;
+    margin: 0 30px;
+    font-weight: 700;
+}
+
+strong {
+    font-weight: 700px;
+}
+
+#name {
+    font-weight: 700px;
+}
+
+.pull-left {
+    text-align: left;
+}

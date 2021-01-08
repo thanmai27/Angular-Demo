@@ -1,0 +1,357 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.heading {
+    margin: 100px 0px;
+    /* border: 1px solid; */
+    padding: 5px;
+    /* box-shadow: 5px 5px; */
+}
+
+.heading1 {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    background: none;
+}
+
+.step {
+    text-align: center;
+    opacity: 70%;
+    background: none;
+}
+
+.fullbox {
+    text-align: center;
+}
+
+
+/* 
+.bordertb {
+    border : 2px double; 
+    
+}*/
+
+.center {
+    /* border: 5cm; */
+    background-color: whitesmoke;
+    margin-bottom: 100;
+}
+
+.btn-back {
+    color: black;
+    font-size: small;
+    font-weight: 600;
+    box-shadow: 1px 1px;
+}
+
+.btn-back:hover {
+    background: #495565;
+    color: #8CC641;
+}
+
+.btn-checkest {
+    color: black;
+    font-size: small;
+    font-weight: 600;
+    box-shadow: 1px 1px;
+}
+
+.btn-checkest:hover {
+    background: #8CC641;
+    color: #495565;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h3 {
+    text-align: center;
+    opacity: 150px;
+}
+
+.kith-set1 {
+    margin: 10px 0px;
+}
+
+.kith-set2 {
+    margin: 10px 0px;
+}
+
+.kith-set2 {
+    margin: 10px 0px;
+}
+
+.kith-set3 {
+    margin: 10px 0px;
+}
+
+.kith-set4 {
+    margin: 10px 0px;
+}
+
+.kith-set5 {
+    margin: 10px 0px;
+}
+
+.names {
+    text-align: left;
+}
+
+.kith-set6 {
+    margin: 10px 0px;
+}
+
+.kith-set7 {
+    margin: 10px 0px;
+}
+
+.quan,
+.minus,
+.plus {
+    width: 20px;
+    border: 1px solid #8cc641;
+}
+
+.quan,
+.quan1,
+.quan2,
+.quan3,
+.quan4 {
+    background-color: none;
+}
+
+.quan5,
+.quan6 {
+    background-color: none;
+}
+
+.quan1,
+.minus1,
+.plus1 {
+    width: 20px;
+    border: 1px solid #8cc641;
+}
+
+.minus2,
+.minus3,
+.minus4,
+.minus5,
+.minus6 {
+    width: 20px;
+    border: 1px solid #8cc641;
+    margin-left: -12px;
+}
+
+.plus2,
+.plus3,
+.plus4,
+.plus5,
+.plus6 {
+    width: 20px;
+    border: 1px solid #8cc641;
+}
+
+.quan2,
+.quan3.quan4,
+.quan5,
+.quan6 {
+    width: 20px;
+    border: 1px solid #8cc641;
+}
+
+.quan3,
+.minus3,
+.plus3 {
+    width: 20px;
+    border: 1px solid #8cc641;
+}
+
+.quan4,
+.minus4,
+.plus4 {
+    width: 20px;
+    border: 1px solid #8cc641;
+}
+
+.quan5,
+.minus5,
+.plus5 {
+    width: 20px;
+    border: 1px solid #8cc641;
+}
+
+.quan6,
+.minus6,
+.plus6 {
+    width: 20px;
+    border: 1px solid #8cc641;
+}
+
+.quantitybuttons_added {
+    width: 20px;
+}
+
+.ward {
+    margin-top: 2px;
+    margin-bottom: 20px;
+}
+
+.Tv {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.Study {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.open {
+    padding-right: 45px;
+}
+
+.slide {
+    padding-right: 45px;
+}
+
+.types {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.type {
+    padding-right: 30px;
+}
+
+.bg {
+    margin-top: 50px;
+    height: 100%;
+}
+
+.bg2 {
+    margin: 50px 0px;
+}
+
+.title {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.center {
+    margin-top: auto;
+}
+
+h4 {
+    background-image: url('https://comps.canstockphoto.com/sketch-cuisine-plan-kitchen-in-line-illustration_csp53640026.jpg');
+}
+
+.q-btn1 {
+    margin-left: 80px;
+}
+
+.plus[_ngcontent-jgk-c156] {
+    width: 18px!important;
+}
+
+@media (min-width:367px) and (max-width:768px) {
+    .quan,
+    .quan1,
+    .quan2,
+    .quan3,
+    .quan4,
+    .quan5,
+    .quan6,
+    .minus,
+    .minus2,
+    .minus3,
+    .minus4,
+    .minus5,
+    .minus6,
+    .plus,
+    .plus2,
+    .plus3,
+    .plus4,
+    .plus5,
+    .plus6 {
+        width: 14px;
+        border: 1px solid #8cc641;
+    }
+    .quan,
+    .quan1,
+    .quan2,
+    .quan3,
+    .quan4,
+    .quan5,
+    .quan6,
+    .minus,
+    .minus2,
+    .minus3,
+    .minus4,
+    .minus5,
+    .minus6,
+    .plus,
+    .plus2,
+    .plus3,
+    .plus4,
+    .plus5,
+    .plus6 {
+        width: 14px;
+        border: 1px solid #8cc641;
+    }
+    .q-btn1 {
+        margin-left: 40px;
+    }
+}
+
+@media (min-width:367px) and (max-width:1024px) {
+    .quan,
+    .quan1,
+    .quan2,
+    .quan3,
+    .quan4,
+    .quan5,
+    .quan6,
+    .minus,
+    .minus2,
+    .minus3,
+    .minus4,
+    .minus5,
+    .minus6,
+    .plus,
+    .plus2,
+    .plus3,
+    .plus4,
+    .plus5,
+    .plus6 {
+        width: 18px;
+        border: 1px solid #8cc641;
+    }
+    .quan,
+    .quan1,
+    .quan2,
+    .quan3,
+    .quan4,
+    .quan5,
+    .quan6,
+    .minus,
+    .minus2,
+    .minus3,
+    .minus4,
+    .minus5,
+    .minus6,
+    .plus,
+    .plus2,
+    .plus3,
+    .plus4,
+    .plus5,
+    .plus6 {
+        width: 18px;
+        border: 1px solid #8cc641;
+    }
+    .q-btn1 {
+        margin-left: 40px;
+    }
+}

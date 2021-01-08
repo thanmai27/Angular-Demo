@@ -1,0 +1,70 @@
+<div class="main">
+    <!-- Sign up form -->
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <!-- <h2 class="form-title">Sign up</h2> -->
+                    <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)" class="register-form" id="register-form" style="max-width:500px;margin:auto">
+
+                        <div class="input-container">
+                            <i class="fa fa-user icon" style="font-size:15px"></i>
+                            <input type="text" class="input-field" #fullName="ngModel" [(ngModel)]="userService.selectedUser.fullName" name="fullName" id="fullName" placeholder="Your Name" ng-class="{'active': isActive}" ng-click="activeButton()" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !fullName.valid}"
+                            />
+                            <div *ngIf="signUpForm.submitted && !fullName.valid">
+                                <label class="validation-message">This field is required.</label>
+                            </div>
+                        </div>
+
+                        <div class="input-container">
+                            <i class="fa fa-envelope icon" aria-hidden="true" style="font-size:15px"></i>
+                            <input type="email" class="input-field" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" id="email" autocomplete="off" placeholder="Your Email" required [pattern]="emailRegex" [ngClass]="{ 'invalid-textbox':signUpForm.submitted && !email.valid} "
+                            />
+                            <div *ngIf="signUpForm.submitted && email.errors">
+                                <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
+                                <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+                            </div>
+                        </div>
+
+                        <div class="input-container">
+                            <i class="fa fa-phone icon" aria-hidden="true" style="font-size:15px"></i>
+                            <input type="tel" class="input-field" #phone="ngModel" [(ngModel)]="userService.selectedUser.phone" name="phone" id="phone" placeholder="Enter phone" minlength="10" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !phone.valid } " />
+                            <div *ngIf="signUpForm.submitted && phone.errors">
+                                <label *ngIf="phone.errors.required" class="validation-message">This field is required.</label>
+                                <label *ngIf="phone.errors.minlength" class="validation-message">Enter atleast 10 characters.</label>
+                                <label *ngIf="phone.errors.pattern" class="validation-message">Enter only numbers.</label>
+                            </div>
+                        </div>
+                        <div class="input-container">
+                            <i class="fa fa-lock icon" style="font-size:15px"></i>
+                            <input type="password" class="input-field" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" id="password" placeholder="Enter your password" minlength="8" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }"
+                            />
+                            <div *ngIf="signUpForm.submitted && password.errors">
+                                <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+                                <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 8 characters.</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            <label for="agree-term" class="label-agree-term">I agree all statements in 
+                                <a href="#" class="term-service">Terms of service</a></label>
+                        </div>
+                        <div class="form-group form-button">
+                            <!-- <input type="submit" name="signup" id="signup" class="form-submit" value="Signup" class="sign2" /> -->
+                            <button type="submit" class="btn btn-signb">Sign Up</button>
+
+                        </div>
+                    </form>
+
+                    <div class="success" *ngIf="showSucessMessage">
+                        Signed Up successfully!!!
+                    </div>
+
+                    <!-- Error message -->
+                    <div class="alert" *ngIf="serverErrorMessages">
+                        {{serverErrorMessages}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,160 @@
+.heading1 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.configuaration {
+    /* background: #495565; */
+    border-radius: 5px;
+    /* border : 2px solid;
+    border-color: #495565; */
+    height: fit-content;
+}
+
+.file-field {
+    border: 2px solid;
+}
+
+.select {
+    margin-top: 15px;
+    display: block;
+}
+
+
+/* .built {
+    margin-top: 15px;
+    display: block;
+    width: 20%;
+} */
+
+.start {
+    margin-top: 100px;
+    /* box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.1); */
+}
+
+.unitcon {
+    /* color: #ffff; */
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px 0px;
+    text-align: left;
+}
+
+.mat-button-toggle:active {
+    color: #8CC641;
+    /* border-color : #8cc641; */
+}
+
+.to {
+    opacity: 60%;
+    text-align: center;
+}
+
+
+/* .configuaration:hover+.icon {
+    display: block;
+} */
+
+.icon {
+    display: block;
+    height: 100%;
+}
+
+.btn-back {
+    color: black;
+    font-size: small;
+    font-weight: 600;
+    /* box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.1); */
+}
+
+.btn-back:hover {
+    background: #495565;
+    color: #8CC641;
+}
+
+.btn-next {
+    color: black;
+    font-size: small;
+    font-weight: 600;
+    /* box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.1); */
+}
+
+.btn-next:hover {
+    background: #495565;
+    color: #8CC641;
+}
+
+.purpose-section .active {
+    color: #fff;
+    background-color: none;
+    color: #8CC641;
+    font-weight: 600;
+}
+
+.purpose-section .purpose-toggle-button {
+    color: #8CC641;
+    font-size: 13px!important;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 16px;
+    text-align: center;
+    padding: 8px 20px;
+    border-radius: 5px;
+    border: 1px solid #8CC641;
+    ;
+    background-color: #fff;
+    -webkit-appearance: none;
+    margin-right: 10px;
+}
+
+.file-field1 {
+    margin-right: 100px;
+}
+
+.mat-button-toggle-group {
+    background-color: #8CC641;
+}
+
+@media (min-width:316px) and (max-width:768px) {
+    .quan,
+    .minus,
+    .plus {
+        width: 10px;
+        border: 1px solid #8cc641;
+    }
+    .quan1,
+    .minus1,
+    .plus1 {
+        width: 10px;
+        border: 1px solid #8cc641;
+    }
+    .q-btn1 {
+        margin-left: 70px;
+    }
+}
+
+@media (min-width:316px) and (max-width:1024px) {
+    .quan,
+    .minus,
+    .plus {
+        width: 16px;
+        border: 1px solid #8cc641;
+    }
+    .quan1,
+    .minus1,
+    .plus1 {
+        width: 16px;
+        /* width:10px;  */
+        border: 1px solid #8cc641;
+    }
+    .q-btn1 {
+        margin-left: 70px;
+    }
+}
+
+.uc1 {
+    margin-top: 20px;
+}
+
+mat-form-field {
+    min-width: 100%;
+}

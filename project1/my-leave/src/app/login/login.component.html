@@ -1,0 +1,19 @@
+
+<div class="container-fluid">
+    <form #myform="ngForm" (ngSubmit)="Onsubmit(myform.value)" ngNativeValidate>
+        <div class="input-container">
+            <i class="fa fa-user icon"></i>
+            <input class="form-control" type="text" placeholder="Enter username" value="" name="user" ngModel required><br><br>
+        </div>
+            
+        <div class="input-container">
+            <i class="fa fa-key icon"></i>
+            <input class="form-control" type="password" placeholder="Enter password" value="" name="pass" ngModel required><br><br>
+        </div>
+        
+        <button>Submit</button>
+     
+    </form>
+</div>
+
+<p>{{emp.empName}}</p>

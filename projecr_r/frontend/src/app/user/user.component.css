@@ -1,0 +1,53 @@
+.container-fluid {
+    margin: 150px 0px;
+}
+
+#formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    height: 100%;
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+}
+
+.signup {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.signin {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px 0px!important;
+}
+
+.btn-facebook {
+    background-color: #4267B2;
+    color: #fff;
+    margin-left: 50px;
+}
+
+.btn-google {
+    background-color: #db3236;
+    color: #fff;
+    margin-left: 50px;
+}
+
+.fab {
+    font-size: 18px;
+    margin: 0px 5px;
+}
+
+
+/* Style the active class, and buttons on mouse-over */
+
+.bg-sign {
+    background-color: #6666666e;
+    color: #fff;
+    text-align: center;
+}
+
+.btn1.active {
+    background-color: rgb(138, 197, 62) !important;
+    color: white;
+}

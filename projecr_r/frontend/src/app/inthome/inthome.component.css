@@ -1,0 +1,275 @@
+/* Nav Bar Style */
+
+
+/* Banner  */
+
+.propeden {
+    color: #fff;
+}
+
+.banner {
+    background-image: url("https://i.redd.it/8ua8oeucz57z.jpg");
+    /* background-color: gray; */
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title {
+    font-weight: 600;
+    margin: 270px 0px;
+    /* font-size: 300%; */
+}
+
+.line {
+    margin-top: 100px;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #8CC641;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-get-quote {
+    color: #213b52;
+    border-radius: 50px;
+    padding: 8px 35px 10px 35px;
+    border: 2px solid #fdc134;
+    transition: all ease-in-out 0.3s;
+    display: inline-block;
+    background: #fdc134;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-get-quote:hover {
+    background: #8CC641;
+    transform: scale(1.2);
+}
+
+.cont {
+    color: #fff;
+    margin: 200px 0px;
+    /* margin-top: 81px; */
+    height: 100%;
+    background-color: #495565;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#cu {
+    margin: 0px;
+    padding: 10px 0px;
+    color: #8CC641;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-primary {
+    background: #8CC641;
+    /* transform: scale(1.2); */
+    border: none;
+    margin: 10px 0px;
+}
+
+.btn-primary:hover {
+    background: #8CC641;
+    transform: scale(1.2);
+    border: none;
+    margin: 10px 0px;
+}
+
+
+/* Banner done  */
+
+
+/* WHy US Styles  */
+
+
+/* Green Line for why us  */
+
+.y-us-title:before {
+    content: "";
+    /* background-color: #8CC641; */
+    border-radius: 2px;
+    display: block;
+    height: 3px;
+    position: relative;
+    width: 50px;
+}
+
+mat-form-field {
+    min-width: 100%;
+}
+
+#why-us {
+    margin: 20px 0;
+}
+
+.matlabel {
+    color: #fff;
+}
+
+::placeholder {
+    color: #fff;
+    opacity: 50%;
+    /* Firefox */
+}
+
+.q {
+    color: #8CC641;
+    font-size: xx-large;
+}
+
+.wu {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* Zoom-n-rotate Container */
+
+.image:hover img {
+    transition: transform .5s ease-in-out;
+}
+
+.yui-img {
+    margin: 0 auto;
+    display: block;
+}
+
+
+/* The Transformation */
+
+.image:hover img {
+    transform: scale(2) rotate(25deg);
+}
+
+.example-button-toggle-label {
+    display: inline-block;
+    margin: 16px;
+}
+
+.wu {
+    font-size: xx-large;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.wu1 {
+    font-size: large;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.i {
+    text-align: center;
+}
+
+.why {
+    margin: 50px;
+    font-size: 20px;
+}
+
+.y-us-content {
+    text-align: center;
+    margin: 50px;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600px;
+}
+
+.clearfix {
+    margin: 0 auto;
+    display: block;
+}
+
+
+/* Our service container styles  */
+
+.ourserve {
+    margin: 20px auto;
+    display: block;
+}
+
+.os {
+    font-weight: 600;
+    text-align: center;
+}
+
+.osimg {
+    margin: 30px auto;
+    display: block;
+}
+
+.our {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+
+/* Our Service ends */
+
+
+/* Our brands CSS */
+
+.ob {
+    position: relative;
+    padding: 10px 20px;
+}
+
+.ob::before {
+    content: '';
+    /* top: 0px; */
+    position: absolute;
+    width: 10%;
+    bottom: 0px;
+    border-bottom: 5px solid #8CC641;
+}
+
+.ob {
+    margin: 0px 20px;
+    font-size: 20px;
+}
+
+
+/* 3 Steps CSS */
+
+.stepsnxt {
+    text-align: center;
+}
+
+.mat-horizontal-content {
+    text-align: center;
+    overflow: hidden;
+}
+
+#step1p {
+    font-size: 20px;
+}
+
+.step1img {
+    text-align: left;
+}
+
+#step2p {
+    font-size: 20px;
+    text-align: center;
+}
+
+.step2img {
+    text-align: center;
+}
+
+#step3p {
+    font-size: 20px;
+    text-align: right;
+}
+
+.step3img {
+    text-align: right;
+}
+
+.stepsheading {
+    font-size: 30px;
+    color: #8CC641;
+    text-align: left !important;
+    margin: 0 30px;
+}

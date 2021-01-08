@@ -1,0 +1,17 @@
+.container-fluid
+{
+    height:550px; 
+    background-size:cover;
+    background-image:url('../../assets/images/hgt.jpg');
+    background-attachment:cover;
+
+  }
+  .row{
+    background-image: linear-gradient(to left, rgba(255,0,0,0), rgb(30, 200, 255)); 
+  }
+  h1
+  {
+    font-size: 7em;
+    font-family:Brush Script MT;
+
+  }

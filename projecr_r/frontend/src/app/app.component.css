@@ -1,0 +1,175 @@
+/* .textContainer_about{
+	text-align: center;
+} */
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.ourservice {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.os {
+    padding-left: 20px;
+    padding-right: 123px;
+    font-family: 'Montserrat', sans-serif;
+    /* font-size:  */
+    font-weight: 600;
+}
+
+.dinner {
+    margin-top: -41px;
+}
+
+.mo {
+    padding-right: 123px;
+    padding-left: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dinner {
+    margin: 0px;
+}
+
+.full {
+    font-family: Arial, Helvetica, sans-serif;
+    /* background-image       : url('https://images.unsplash.com/photo-1560185127-6ed189bf02f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80'); */
+    background-position: center;
+    /* background-color       : yellowgreen; */
+    /* -webkit-background-size: cover;
+      -moz-background-size    : cover;
+      /* -o-background-size   : cover; */
+    background-size: cover;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+/* * {box-sizing: border-box;} */
+
+input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.submit {
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
+.sub-btn {
+    margin-top: 30px;
+}
+
+.ca {
+    text-align: center;
+    padding-right: 10;
+}
+
+.title {
+    font-weight: 600;
+    margin: 200px 0px;
+    font-size: 300%;
+}
+
+.contact {
+    /* background-color: whitesmoke; */
+    border: antiquewhite;
+    border-radius: 1%;
+    font-weight: 600;
+    margin-block-start: 150px;
+    background-color: lightcyan;
+    border-radius: 2;
+}
+
+.navbar-right {
+    background-color: greenyellow;
+}
+
+.bg-light {
+    background-color: white;
+}
+
+.btn-success {
+    margin-left: 25px;
+}
+
+.sub-btn {
+    text-align: center;
+}
+
+h1 {
+    color: blue;
+    background-color: white;
+}
+
+
+/* hover */
+
+.card:hover {
+    background: url("https://static1.bigstockphoto.com/3/5/3/large2/353320316.jpg") no-repeat;
+}
+
+.IT {
+    margin-right: 10px;
+    /* padding-right: 20px; */
+    padding-left: 20px;
+}
+
+#sticky-footer {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logos+.footer-copy {
+    text-align: center;
+    padding-left: 50;
+}
+
+#us1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: initial;
+    text-align: center;
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+#usp {
+    font-weight: 600;
+    text-align: center;
+}
+
+.ourwork {
+    width: auto;
+    height: auto;
+}
+
+.footer-area {
+    background-color: whitesmoke;
+}

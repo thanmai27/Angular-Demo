@@ -1,0 +1,53 @@
+h1
+{
+    padding-left: 350px;
+    color: whitesmoke;
+    
+}
+.sidenav {
+    background-color: #f1f1f1;
+    height: 100%;
+  }
+ nav
+ {
+     background-color: blue;
+ }
+
+img
+{
+    height: 180px;width: 180px;
+    margin-left: 70px;
+}
+i
+{
+    color: whitesmoke;
+    height: 10px;
+    width: 80px;
+    padding-top: 10px;
+text-align: left;}
+
+a
+{
+    font-size: larger;
+    padding:50px 50px;
+    color: rgb(240, 42, 108);    
+}
+
+a:hover {
+    background-color:blue;
+  }
+
+  
+.col-md-3
+{
+    background-image: url('../../assets/images/blur.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height:550px;
+  
+    
+}
+
+
+

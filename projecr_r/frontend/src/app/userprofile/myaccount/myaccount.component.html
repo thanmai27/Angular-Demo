@@ -1,0 +1,35 @@
+<div fxLayout="row" class="parent">
+    <div fxFlex="20%" class="left">
+    </div>
+    <div fxFlex="80%" class="right">
+
+
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="card">
+                    <div class="card-header">
+
+                        <div class="profile_pic">
+                            <img src="https://www.flaticon.com/premium-icon/icons/svg/3107/3107137.svg">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center flex-column">
+                            <h1 class="prfle-detail">PROFILE DETAILS</h1>
+                            <div class="name_container" *ngIf="userDetails">
+                                <label name="Name" value="Name"></label>
+                                <div class="name"> {{userDetails.fullName}} </div>
+                            </div>
+                            <!-- <div class="address">{{userDetails.fullName.split(' ')[1]}}</div>-->
+                            <div class="address">{{userDetails.email}}</div>
+                        </div>
+                        <div class="follow">
+                            <input type="button" class="follow_btn" (click)="onLogout()" value="Logout" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
