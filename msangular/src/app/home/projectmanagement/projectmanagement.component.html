@@ -2,7 +2,7 @@
 <div class="container-fluid" style="margin-top: 2%;">
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card" id="table-content">
 
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -24,7 +24,7 @@
                                 <td>{{project.createdOn |date:'medium' }}</td>
                                 <td>
                                     <button [hidden]="project.projectLead==null?true:false" [disabled]="project.projectState=='completed' || project.projectState=='cancelled'?true:false" class="btn btn-primary" style="background-color: rgb(211, 21, 211);width: 80px;border: transparent;margin-left: 3px;"
-                                        (click)="fn_Map(project)"> Edit</button>
+                                        (click)="fn_Edit(project)"> Edit</button>
 
                                     <button [hidden]="project.projectLead==null?false:true" id="{{project._id}}" class="btn btn-warning" style="background-color: rgb(250, 81, 109);width: 80px;border: transparent;margin-left: 3px" (click)="fn_Map(project)"> Map</button>
 
@@ -89,7 +89,7 @@
 
                         <select id="projectLead" class="form-control" #projectLead="ngModel" name="projectLead" [(ngModel)]="projectmodel.projectLead" required>
 
-                          <option id="{{user._id}}"*ngFor="let user of userService.users"   [value]="user.name" [hidden]="user.role=='Member'?true:false">{{user.name}}</option>
+                          <option id="{{user._id}}"*ngFor="let user of userService.users"   [value]="user.name"  [hidden]="user.role=='Member'?true:false ||  user.isExisitngMember==true?true:false ||user.enableOrDisable==true?true:false " >{{user.name}}</option>
                         </select>
 
                     </div>
@@ -100,6 +100,10 @@
                     <input type="hidden" id="txt_time" class="form-control" name="createdOn" #createdOn="ngModel" [(ngModel)]="projectmodel.createdOn">
                 </div>
 
+                <div class="row" *ngIf="view">
+
+                    <input type="hidden" id="txt_selectTime" class="form-control" name="selectDate" #selectDate="ngModel" [(ngModel)]="projectmodel.selectDate">
+                </div>
                 <div class="row" *ngIf="hide">
                     <div class="col-md-4">
                         <label>Team Member :<span style="color: red;">*</span></label>
@@ -107,7 +111,7 @@
                     <div class="col-md-8">
 
                         <mat-select style="width: 100%; " multiple id="projectMembers " class="form-control " #projectMembers="ngModel" name="projectMembers " [(ngModel)]="projectmodel.projectMembers " required>
-                            <mat-option *ngFor="let user of userService.users" [hidden]="user.role=='Team Lead' ?true:false" [value]="user.name ">{{user.name}}</mat-option>
+                            <mat-option id="{{user._id}}" *ngFor="let user of userService.users" [hidden]="user.role=='Team Lead' ?true:false || (user.isExisitngMember==true?true:false ) ||user.enableOrDisable==true?true:false " [value]="user.name ">{{user.name}}</mat-option>
                         </mat-select>
                         <!-- <input type="text" id="txt_members" class="form-control" name="projectMembers" #projectMembers="ngModel" [(ngModel)]="projectmodel.projectMembers"> -->
                         <!-- <ng-multiselect-dropdown [data]="dropdownList" [(ngModel)]="projectmodel.projectMembers" [ngModelOptions]="{standalone: true}" [settings]="dropdownSettings">
@@ -165,7 +169,7 @@
             <div class="col-md-1">:</div>
 
             <div class="col-md-3">
-                <input type="text" class="form-control" style="background-color: transparent;" value={{projectmodel.createdOn}} readonly>
+                <p class="form-control" style="background-color: transparent;" readonly>{{projectmodel.createdOn|date:'medium'}} </p>
 
 
             </div>
@@ -192,12 +196,12 @@
             <div class="col-md-3"></div>
 
             <div class="col-md-2">
-                <label>ON </label>
+                <label>{{projectmodel.projectState}}  ON </label>
             </div>
             <div class="col-md-1">:</div>
 
             <div class="col-md-3">
-                <input type="text" class="form-control" style="background-color: transparent;" value={{projectmodel.createdOn}} readonly>
+                <p class="form-control" style="background-color: transparent;" readonly>{{projectmodel.selectDate|date:'medium'}}</p>
 
             </div>
             <div class="col-md-3"></div>

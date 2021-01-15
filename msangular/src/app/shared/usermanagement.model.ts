@@ -7,4 +7,7 @@ export class User
   phone:number;
   gender:string;
   isactive:number;
+  isExisitngMember:boolean;
+  enableOrDisable:boolean;
+
 }

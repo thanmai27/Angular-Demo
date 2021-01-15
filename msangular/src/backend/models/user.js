@@ -7,6 +7,7 @@ var User = mongoose.model('User', {
     phone: { type: Number },
     gender: { type: String },
     isactive: { type: Number },
+    ismap: { type: Number },
 
 
 });

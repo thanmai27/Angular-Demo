@@ -48,6 +48,8 @@ Fn_resetForm(form?:NgForm)
       phone:null,
       gender:"",
       isactive:null,
+      isExisitngMember:false,
+      enableOrDisable:false
 
     }
 

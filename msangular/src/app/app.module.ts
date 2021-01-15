@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ToastrModule } from 'ngx-toastr';
 import { DataTablesModule } from 'angular-datatables';
@@ -31,6 +31,7 @@ import { UserManagementComponent } from './home/user-management/user-management.
 import { ProjectmanagementComponent } from './home/projectmanagement/projectmanagement.component';
 import { MaterialModule } from './material/material.module';
 import { TableComponent } from './table/table.component';
+import { TaskmanagementComponent } from './home/taskmanagement/taskmanagement.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { TableComponent } from './table/table.component';
     UserManagementComponent,
     ProjectmanagementComponent,
     TableComponent,
+    TaskmanagementComponent,
 
   ],
   imports: [
@@ -52,7 +54,7 @@ import { TableComponent } from './table/table.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule,ReactiveFormsModule,
     ToastrModule.forRoot(),
     DataTablesModule,
     NgMultiSelectDropDownModule.forRoot(),
@@ -78,6 +80,8 @@ import { TableComponent } from './table/table.component';
     {path:'projectmanagement',component:HomeComponent,//canActivate:[AuthGuard],
     children:[{path:'',component:ProjectmanagementComponent}]},
 
+    {path:'taskmanagement',component:HomeComponent,//canActivate:[AuthGuard],
+    children:[{path:'',component:TaskmanagementComponent}]},
 
       {path:'upload', component:BlobComponent},
       {path:'table', component:TableComponent},

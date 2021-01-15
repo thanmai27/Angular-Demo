@@ -7,7 +7,7 @@ var { User } = require('../models/user');
 var { Project } = require('../models/project');
 
 
-
+let user;
 async function validate_Project(Project) {
     try {
         let project = {
@@ -16,6 +16,7 @@ async function validate_Project(Project) {
             projectState: Joi.string().required(),
             projectLead: Joi.string().required(),
             createdOn: Joi.date(),
+            selectDate: Joi.date(),
             projectMembers: Joi.array(),
             ismap: Joi.number()
 
@@ -51,6 +52,7 @@ router.post('/', async(req, res) => {
         projectState: "created",
         projectLead: req.body.projectLead == undefined || '' ? null : req.body.projectLead,
         createdOn: Date.now(),
+        selectDate: Date.now(),
         projectMembers: req.body.projectMembers,
         ismap: 0
 
@@ -79,6 +81,23 @@ router.get('/', async(req, res) => {
 
 })
 
+router.get('/ismap', async(req, res) => {
+
+
+    let users = await User.find({ role: 'Team Lead' }, (err, doc) => {
+        if (!err) {
+            res.send(doc);
+        } else {
+            res.status(400).send("Cannot get DEatils");
+
+        }
+
+        console.log(users);
+    })
+
+
+})
+
 router.get('/:id', async(req, res) => {
     await Project.findById(req.params.id, (err, doc) => {
         if (!err) {
@@ -98,12 +117,12 @@ router.get('/:id', async(req, res) => {
 
 router.put('/:id', (req, res) => {
 
-
     try {
 
-        var project = {
+        let project = {
             projectName: req.body.projectName,
             projectState: req.body.projectState,
+            selectDate: Date.now(),
             projectLead: req.body.projectLead,
             projectMembers: req.body.projectMembers,
         };
@@ -128,7 +147,7 @@ router.put('/ismap/:id', (req, res) => {
     var user = {
 
         ismap: 1,
-
+        selectDate: Date.now()
 
     }
 
@@ -153,6 +172,7 @@ router.put('/isunmap/:id', (req, res) => {
     var user = {
 
         ismap: 0,
+        selectDate: Date.now()
 
 
     }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import * as $ from 'jquery';
 
 
@@ -10,7 +9,8 @@ import { Project } from 'src/app/model/project.model';
 import { ProjectmanagementService } from 'src/app/shared/projectmanagement.service';
 import { UserManagementService } from 'src/app/shared/user-management.service';
 import { User } from 'src/app/shared/usermanagement.model';
-
+export const EDIT="edit";
+export const MAP="map";
 @Component({
   selector: 'app-projectmanagement',
   templateUrl: './projectmanagement.component.html',
@@ -21,9 +21,11 @@ msg;
 show=false;
 hide=false;
 view=false;
+currentDate:Date;
 users:User[];
 project:Project[];
-
+teamlead:[]=[];
+member;
 dtOptions: DataTables.Settings = {};
 
 //multi-dropdown
@@ -31,12 +33,12 @@ dropdownList :any= [];
 selectedItems = [];
 dropdownSettings = {};
 
-//mat table
 
 
 projectmodel = new Project();
-
-  constructor(public userService: UserManagementService,public projectService:ProjectmanagementService,private toastr: ToastrService) { }
+usermodel = new User();
+isEditOrMap:boolean=false;
+constructor(public userService: UserManagementService,public projectService:ProjectmanagementService,private toastr: ToastrService) { }
 
   ngOnInit()
   {
@@ -51,7 +53,54 @@ projectmodel = new Project();
     this.fn_ResetForm()
   this.fn_RefreshProjectList();
   this.Fn_refreshUserList();
-  this.fn_MultiDropDown();
+
+  }
+
+  fn_AssignExistienceProjectMember(type,Project){
+    try{
+      //setTimeout(()=>{
+        this.userService.users.forEach(obj => {
+          let value= this.projectService.projects.filter(ele=>((ele.projectLead||ele.projectMembers)==obj.name || ele.projectMembers.includes(obj.name)) && ele.projectState =="started")
+
+        if(type && type==MAP ){
+          if(value && value.length!=0){
+            obj.isExisitngMember = true;
+          }else{
+            obj.isExisitngMember = false;
+          }
+          obj.enableOrDisable=false;
+
+        }else{
+          //if(value && value.length!=0 ){
+            let value1= this.projectService.projects.filter(ele=>((ele.projectLead||ele.projectMembers)==obj.name || ele.projectMembers.includes(obj.name))&& ele.projectState =="started" &&ele.projectName==Project.projectName);
+            if(value1.length==0){
+              obj.enableOrDisable=true;
+
+            }else{
+              obj.enableOrDisable=false;
+            }
+          // }
+          obj.isExisitngMember = false;
+        }
+
+
+
+        });
+     // },1000)
+    }catch(e){
+      console.log(e)
+    }
+    // this.projectService.getProjectList().subscribe((res) => {
+    //   this.projectService.projects = res as Project[];
+
+    // });
+    // this.userService.getUserList().subscribe((res) => {
+    //   this.userService.users = res as User[];
+    //   //console.log("User refresh",res)
+
+    // });
+
+
   }
   fn_ResetForm(form?:NgForm)
 {
@@ -62,8 +111,9 @@ projectmodel = new Project();
       projectName:"",
       projectState:"",
       createdOn:null,
+      selectDate:null,
       projectLead:null,
-      projectMembers:[],
+      projectMembers:'',
       ismap:null
 
     }
@@ -71,33 +121,6 @@ projectmodel = new Project();
   this.fn_RefreshProjectList();
   $("#hide_content").hide();
 }
-  fn_MultiDropDown()
-  {
-
-    this.dropdownSettings =
-    {
-    singleSelection: false,
-    idField: '_id',
-    textField: 'name',
-
-    itemsShowLimit: 5,
-    };
-
-  this.userService.getTeamMemberList().subscribe((res)=>
-   {
-    this.dropdownList = (res) ;
-    //console.log("Dropdown res is",res);
-
-   })
-
-  }
-  onItemSelect(item: any) {
-    debugger;
-    this.projectmodel.projectMembers.push(item.name);
-    console.log("selecteditems",this.projectmodel.projectMembers);
-
-  }
-
 
   fn_RefreshProjectList() {
     this.projectService.getProjectList().subscribe((res) => {
@@ -115,18 +138,27 @@ projectmodel = new Project();
   Fn_AddUser()
   {
     this.fn_ResetForm();
+    $("#show_content").click(function () {
+      $("#hide_content,#table-content").show();
+    })
     this.show = true;
     this.hide =  false;
-    this.view = false
-  }
-  fn_Save(form: NgForm) {
+    this.view = false;
 
-    if (form.value._id == undefined || form.value._id == '' ) {
+
+  }
+  fn_Save(form: NgForm)
+  {
+
+
+    if (form.value._id == undefined || form.value._id == '' )
+    {
       this.projectmodel = form.value;
 
 
       this.projectService.postProject( this.projectmodel).subscribe((data) => {
-        this.fn_RefreshProjectList()
+        this.fn_ResetForm();
+        this.fn_RefreshProjectList();
         console.log("The data is", data);
         this.toastr.success("Project Added Successguuly", "Your Request has sent !!!",
           {
@@ -135,6 +167,8 @@ projectmodel = new Project();
 
           })
           $("#hide_content").hide();
+
+
           window.location.reload();
 
 
@@ -146,28 +180,35 @@ projectmodel = new Project();
           })
       });
     }
-    else {
-      this.projectService.putProject( this.projectmodel).subscribe((res) => {
-        console.log(res);
+    else
+    {
 
-        this.fn_RefreshProjectList();
+        this.projectmodel.selectDate = this.currentDate;
 
-        $("#hide_content").hide();
+        this.projectService.putProject( this.projectmodel).subscribe((res) => {
+          console.log(res);
+          this.fn_RefreshProjectList();
+          $("#hide_content").hide();
 
-        this.toastr.success("Data Updated Successguuly", "Your Request has sent !!!",
-          {
-            timeOut: 2000,
-            progressAnimation: 'increasing',
-
-          })
-      },
-        (error) => {
-          this.msg = JSON.stringify(error.error);
-          this.toastr.error("Error", this.msg,
+          this.toastr.success("Data Updated Successguuly", "Your Request has sent !!!",
             {
-              timeOut: 4000
+              timeOut: 2000,
+              progressAnimation: 'increasing',
+
             })
-        });
+            this.fn_ResetForm();
+            this.fn_RefreshProjectList();
+        },
+          (error) => {
+            this.msg = JSON.stringify(error.error);
+            this.toastr.error("Error", this.msg,
+              {
+                timeOut: 4000
+              })
+          });
+
+
+
     }
 
 
@@ -180,6 +221,8 @@ this.show = false;
 
 fn_Change(userId,userState)
 {
+  this.currentDate = new Date();
+
   debugger;
   console.log(userId,userState)
   if(userState=='started')
@@ -197,6 +240,11 @@ fn_Change(userId,userState)
 
 fn_Map(project:Project)
 {
+  debugger;
+  // this.usermodel.isExisitngMember = false;
+  this.isEditOrMap=false;
+  this.fn_AssignExistienceProjectMember(MAP,project);
+
 console.log("project map",project)
   this.projectmodel = project;
 
@@ -205,6 +253,27 @@ console.log("project map",project)
   this.view= false;
 
   $("#hide_content").show();
+
+}
+
+fn_Edit(project:Project)
+{
+  debugger;
+  // this.usermodel.isExisitngMember = true;
+  this.isEditOrMap=true;
+
+  this.fn_AssignExistienceProjectMember(EDIT,project);
+
+  this.projectmodel = project;
+
+  console.log("Edit",this.projectmodel)
+
+  this.hide=true;
+  this.show = true;
+  this.view= false;
+
+  $("#hide_content").show();
+
 
 }
 fn_View(project:Project)

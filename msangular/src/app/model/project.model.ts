@@ -5,7 +5,8 @@ export class Project
   projectState: string;
   projectLead: string;
   createdOn: Date;
-  projectMembers: string[];
+  selectDate: Date;
+  projectMembers: string;
   ismap:number
 
 }

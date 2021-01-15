@@ -1,0 +1,165 @@
+<button id="show_content" mat-raised-button color="accent" style="margin-left:20%;margin-top: 2%;" (click)="Fn_AddTask()">ADD Task </button>
+<div class="container-fluid" style="margin-top: 2%;">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" id="table-content">
+
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-striped" datatable [dtOptions]="dtOptions">
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                                <th>Team Member</th>
+                                <th>Task Status</th>
+                                <th>Created On</th>
+                                <th>Assign On</th>
+                                <th>Start On</th>
+                                <th>End On</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let task of taskService.tasks;let indexOfelement=index;">
+                                <td>{{task.projectName}}</td>
+                                <td>{{task.teamMember}}</td>
+                                <td>{{task.taskStatus}}</td>
+                                <td>created on</td>
+                                <td>assigned on </td>
+                                <td>{{task.startOn|date:'medium'}}</td>
+                                <td>{{task.endOn|date:'medium'}}</td>
+                                <td>
+
+                                    <button class="mat-icon-button" style="background-color: rebeccapurple;" mat-icon-button [disabled]="task.taskStatus=='Completed'||task.taskStatus=='Cancelled'||task.taskStatus=='ON hold'?true:false" (click)="fn_Edit(task)"><mat-icon >create</mat-icon></button>&nbsp;
+                                    <button class="mat-icon-button" style="background-color:green" mat-icon-button (click)="fn_View(task)"><mat-icon >preview</mat-icon></button>
+
+                                </td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div>
+
+<form #myform="ngForm" ngNativeValidate>
+
+    <div *ngIf="show">
+
+        <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="taskmodel._id">
+
+        <div id="hide_content" class="card">
+
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>Project</label>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>select Project</mat-label>
+                            <mat-select name="projectName" [(ngModel)]="taskmodel.projectName" required>
+                                <mat-option *ngFor="let project of projectService.projects" [value]="project.projectName  " (click)="fn_Select(project._id)">
+                                    {{project.projectName }}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="projectControl.hasError('required')">Please choose a project</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Team Memeber</label>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>select TeamMember</mat-label>
+
+                            <mat-select name="teamMember" [(ngModel)]="taskmodel.teamMember" required>
+                                <mat-option *ngFor="let project of teamMember" [value]="project">
+                                    {{project}}
+                                </mat-option>
+
+                            </mat-select>
+                            <mat-error *ngIf="projectControl.hasError('required')">Please choose a TeamMember</mat-error>
+
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>Status</label>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill">
+                            <mat-label>select Status</mat-label>
+                            <mat-select name="taskStatus" (change)="fn_Change(taskmodel._id,taskmodel.taskStatus)" [(ngModel)]="taskmodel.taskStatus" required>
+                                <mat-option *ngFor="let status of options" [value]="status ">
+                                    {{status }}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="statusControl.hasError('required')">Please choose a status</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Assign On</label>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field color="accent" appearance="fill">
+                            <input matInput [min]="minDate" [matDatepicker]="picker3" name="startOn" [(ngModel)]="taskmodel.startOn">
+                            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                            <mat-datepicker #picker3></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <label>Start Date</label>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field color="accent" appearance="fill">
+                            <input matInput [min]="minDate" [matDatepicker]="picker1" name="startOn" [(ngModel)]="taskmodel.startOn">
+                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                            <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                        <label>End Date</label>
+                    </div>
+                    <div class="col-md-4">
+                        <mat-form-field color="accent" appearance="fill">
+                            <input matInput [matDatepicker]="picker2" name="endOn" [(ngModel)]="taskmodel.endOn">
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 2%;" class="col-md-12  text-right">
+                <button id="btn_save" class="btn btn-success" [disabled]="!myform.valid" (click)="fn_Save(myform)">Save</button> &nbsp;
+                <button class="btn btn-danger" (click)="fn_Cancel(myform)">Cancel</button>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+</form>

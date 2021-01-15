@@ -15,6 +15,8 @@ var contactController = require('./controllers/contactController');
 //var azure = require('./controllers/azureblob');
 var userController = require('./controllers/usercontroller');
 var projectController = require('./controllers/projectcontroller');
+var taskController = require('./controllers/taskController');
+
 
 
 var app = express();
@@ -24,6 +26,8 @@ app.use('/contact', contactController)
     //app.use('/upload', azure)
 app.use('/user', userController);
 app.use('/project', projectController);
+app.use('/task', taskController);
+
 
 app.use(error);
 

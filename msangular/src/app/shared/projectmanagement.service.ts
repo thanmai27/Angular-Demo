@@ -18,6 +18,10 @@ export class ProjectmanagementService {
   {
     return this.http.get(this.baseURL);
   }
+  getOneProjectList(Id)
+  {
+    return this.http.get(this.baseURL+ `/${Id}`);
+  }
   postProject(project:Project)
   {
      return this.http.post(this.baseURL,project)

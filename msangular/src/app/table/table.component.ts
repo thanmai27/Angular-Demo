@@ -2,22 +2,11 @@ import { Component, OnInit,AfterViewInit ,ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { Project } from '../model/project.model';
+import { ProjectmanagementService } from '../shared/projectmanagement.service';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
+
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -25,21 +14,42 @@ const NAMES: string[] = [
 })
 export class TableComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
-  dataSource: MatTableDataSource<UserData>;
+  project:Project[]
 
-  constructor() {
-        // Create 100 users
-        const users = Array.from({length: 100}, (_, k) => this.createNewUser(k + 1));
+  displayedColumns: string[] = ['projectName', 'projectState', 'projectLead', 'createdOn','actions'];
+  dataSource: MatTableDataSource<Project>;
 
-        // Assign the data to the data source for the table to render
-        this.dataSource = new MatTableDataSource(users);
+  @ViewChild(MatPaginator, {static: false})
+  set paginator(value: MatPaginator) {
+    if (this.dataSource){
+      this.dataSource.paginator = value;
+    }
+  }
+  @ViewChild(MatSort, {static: false})
+  set sort(value: MatSort) {
+    if (this.dataSource){
+      this.dataSource.sort = value;
+    }
+  }
+  constructor(public projectService:ProjectmanagementService) {
+
+
   }
 
   ngOnInit() {
+
+        this.getAllProject();
   }
 
+  public getAllProject()
+  {
+    this.projectService.getProjectList().subscribe((res)=>
+    {
+      let list =  res as Project[]
+      this.dataSource = new MatTableDataSource(list);
 
+    } )
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -49,16 +59,9 @@ export class TableComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  createNewUser(id: number): UserData {
-    const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-        NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-    return {
-      id: id.toString(),
-      name: name,
-      progress: Math.round(Math.random() * 100).toString(),
-      color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-    };
+  fn_edit()
+  {
+    alert("Edit")
   }
-}
 
+}

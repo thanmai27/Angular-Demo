@@ -5,6 +5,7 @@ var Project = mongoose.model('Project', {
     projectState: { type: String },
     projectLead: { type: String },
     createdOn: { type: Date, default: Date.now },
+    selectDate: { type: Date, default: Date.now },
     projectMembers: [String],
     ismap: { type: Number }
 
