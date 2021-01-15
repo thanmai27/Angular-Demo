@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators,FormGroup, NgForm} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+
 import { Project } from 'src/app/model/project.model';
 import { Task } from 'src/app/model/task.model';
 import { ProjectmanagementService } from 'src/app/shared/projectmanagement.service';
@@ -17,6 +18,10 @@ export class TaskmanagementComponent implements OnInit {
   taskmodel = new Task();
 
   dtOptions: DataTables.Settings = {};
+  showModal: boolean;
+  content: string;
+  title: string;
+
 
   show=false;
   showdate=true;
@@ -31,7 +36,11 @@ teamMember=[];
 
 
 
-  constructor(public projectService:ProjectmanagementService,public taskService:TaskmanagementService ,private toastr: ToastrService  )
+  constructor(
+    public projectService:ProjectmanagementService,
+    public taskService:TaskmanagementService ,
+    private toastr: ToastrService,
+    )
    {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 0, 0, 1);
@@ -168,9 +177,24 @@ console.log(task)
   }
 
 }
-fn_View(task)
+fn_View(task:Task)
+{
+  this.taskmodel = task;
+
+  this.showModal = true; // Show-Hide Modal Check
+  this.content = "This is content!!"; // Dynamic Data
+  this.title = "This is title!!";    // Dynamic Data
+
+}
+
+fn_Modelshow()
 {
 
+}
+//Bootstrap Modal Close event
+fn_Modelhide()
+{
+  this.showModal = false;
 }
 
 }

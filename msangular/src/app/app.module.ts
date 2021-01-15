@@ -17,7 +17,6 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 
-
 import { MsalModule, MsalInterceptor, MsalGuard } from '@azure/msal-angular';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
@@ -59,6 +58,8 @@ import { TaskmanagementComponent } from './home/taskmanagement/taskmanagement.co
     DataTablesModule,
     NgMultiSelectDropDownModule.forRoot(),
     NgSelectModule,
+
+
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger', // set defaults here
     }),

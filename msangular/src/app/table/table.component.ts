@@ -14,7 +14,12 @@ import { ProjectmanagementService } from '../shared/projectmanagement.service';
 })
 export class TableComponent implements OnInit {
 
-  project:Project[]
+  project:Project[];
+
+  showModal: boolean;
+content: string;
+title: string;
+
 
   displayedColumns: string[] = ['projectName', 'projectState', 'projectLead', 'createdOn','actions'];
   dataSource: MatTableDataSource<Project>;
@@ -63,5 +68,15 @@ export class TableComponent implements OnInit {
   {
     alert("Edit")
   }
-
+  show()
+  {
+    this.showModal = true; // Show-Hide Modal Check
+    this.content = "This is content!!"; // Dynamic Data
+    this.title = "This is title!!";    // Dynamic Data
+  }
+  //Bootstrap Modal Close event
+  hide()
+  {
+    this.showModal = false;
+  }
 }

@@ -30,8 +30,12 @@
                                 <td>{{task.endOn|date:'medium'}}</td>
                                 <td>
 
-                                    <button class="mat-icon-button" style="background-color: rebeccapurple;" mat-icon-button [disabled]="task.taskStatus=='Completed'||task.taskStatus=='Cancelled'||task.taskStatus=='ON hold'?true:false" (click)="fn_Edit(task)"><mat-icon >create</mat-icon></button>&nbsp;
-                                    <button class="mat-icon-button" style="background-color:green" mat-icon-button (click)="fn_View(task)"><mat-icon >preview</mat-icon></button>
+                                    <button [disabled]="task.taskStatus=='Completed'||task.taskStatus=='Cancelled'||task.taskStatus=='ON hold'?true:false" class="btn btn-primary" style="background-color: rgb(211, 21, 211);width: 80px;border: transparent;margin-left: 3px;" (click)="fn_Edit(task)"> Edit</button>
+
+                                    <button class="btn btn-success" style="width: 80px;border: transparent;margin-left: 3px" (click)="fn_View(task)"> View</button>
+
+                                    <!-- <button class="mat-icon-button" style="background-color: rebeccapurple;" mat-icon-button [disabled]="task.taskStatus=='Completed'||task.taskStatus=='Cancelled'||task.taskStatus=='ON hold'?true:false" (click)="fn_Edit(task)"><mat-icon >create</mat-icon></button>&nbsp;
+                                    <button class="mat-icon-button" style="background-color:green" mat-icon-button (click)="fn_View(task)"><mat-icon >preview</mat-icon></button> -->
 
                                 </td>
 
@@ -163,3 +167,111 @@
 
 
 </form>
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal" [style.display]="showModal ? 'block' : 'none'">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header" style="background-color: greenyellow;">
+                <button type="button" class="close" data-dismiss="modal" (click)="fn_Modelhide()">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <label>Project Name </label>
+                    </div>
+                    <div class="col-md-1">:</div>
+
+                    <div class="col-md-6">
+                        <label>{{taskmodel.projectName}}</label>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <label>Team Member </label>
+                    </div>
+                    <div class="col-md-1">:</div>
+
+                    <div class="col-md-6">
+                        <label>{{taskmodel.teamMember}}</label>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <label>Task Status</label>
+                    </div>
+                    <div class="col-md-1">:</div>
+
+                    <div class="col-md-6">
+                        <label>{{taskmodel.taskStatus}}</label>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <label>Created On </label>
+                    </div>
+                    <div class="col-md-1">:</div>
+
+                    <div class="col-md-6">
+                        <label></label>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <label>Assign On </label>
+                    </div>
+                    <div class="col-md-1">:</div>
+
+                    <div class="col-md-6">
+                        <label></label>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <label>Start Date </label>
+                    </div>
+                    <div class="col-md-1">:</div>
+
+                    <div class="col-md-6">
+                        <label>{{taskmodel.startOn}}</label>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <label>End Date </label>
+                    </div>
+                    <div class="col-md-1">:</div>
+
+                    <div class="col-md-6">
+                        <label>{{taskmodel.endOn}}</label>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer" style="background-color: greenyellow;">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="fn_Modelhide()">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
