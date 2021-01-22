@@ -4,6 +4,8 @@ export class Task
   projectName: string;
   teamMember:string;
   taskStatus: string;
+  createdOn:Date;
+  assignOn:Date;
   startOn: Date;
   endOn:Date;
 

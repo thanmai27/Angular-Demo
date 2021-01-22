@@ -13,8 +13,10 @@ async function validate_Task(Task) {
         let task = {
 
             projectName: Joi.string(),
-            teamMember: Joi.array(),
+            teamMember: Joi.string(),
             taskStatus: Joi.string(),
+            createdOn: Joi.date(),
+            assignOn:join.date(),
             startOn: Joi.date(),
             endOn: Joi.date(),
 
@@ -73,13 +75,16 @@ router.post('/', async(req, res) => {
         projectName: req.body.projectName,
         teamMember: req.body.teamMember,
         taskStatus: req.body.taskStatus,
-        startOn: req.body.startOn,
-        endOn: req.body.endOn,
+        createdOn: Date.now(),
+        assignOn:req.body.assignOn,
+        startOn: req.body.startOn  ,
+        endOn: req.body.endOn ,
 
 
     });
 
     if (!error) {
+      
         await task.save();
         console.log(req.body)
         res.send(task);
@@ -96,19 +101,24 @@ router.put('/:id', (req, res) => {
 
     try {
 
-
-
+        
         let task = {
             projectName: req.body.projectName,
             teamMember: req.body.teamMember,
             taskStatus: req.body.taskStatus,
+            assignOn:req.body.assignOn,
             startOn: req.body.startOn,
             endOn: req.body.endOn,
 
 
         };
+    
+   
         Task.findByIdAndUpdate(req.params.id, { $set: task }, { new: true })
-            .then(result => res.send(result))
+            .then(result =>
+                {
+                    res.send(result)
+                } )
             .catch(err => res.status(400).send(err))
     } catch (error) {
         console.log(error);

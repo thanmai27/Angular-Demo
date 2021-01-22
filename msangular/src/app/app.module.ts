@@ -13,6 +13,7 @@ import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ToastrModule } from 'ngx-toastr';
 import { DataTablesModule } from 'angular-datatables';
 
+
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
 
@@ -31,6 +32,7 @@ import { ProjectmanagementComponent } from './home/projectmanagement/projectmana
 import { MaterialModule } from './material/material.module';
 import { TableComponent } from './table/table.component';
 import { TaskmanagementComponent } from './home/taskmanagement/taskmanagement.component';
+import { TaskpopupComponent } from './popup/taskpopup/taskpopup.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +46,10 @@ import { TaskmanagementComponent } from './home/taskmanagement/taskmanagement.co
     ProjectmanagementComponent,
     TableComponent,
     TaskmanagementComponent,
+    TaskpopupComponent,
 
   ],
+  entryComponents:[TaskpopupComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -86,6 +90,7 @@ import { TaskmanagementComponent } from './home/taskmanagement/taskmanagement.co
 
       {path:'upload', component:BlobComponent},
       {path:'table', component:TableComponent},
+
 
 
     ]) ,

@@ -26,4 +26,7 @@ export class TaskmanagementService {
 
      return this.http.post(this.baseURL,task)
   }
+  putTask(task:Task) {
+    return this.http.put(this.baseURL + `/${task._id}`, task);
+  }
 }

@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators,FormGroup, NgForm} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import {MatDialog} from '@angular/material';
+
 
 import { Project } from 'src/app/model/project.model';
 import { Task } from 'src/app/model/task.model';
 import { ProjectmanagementService } from 'src/app/shared/projectmanagement.service';
 import{TaskmanagementService} from 'src/app/shared/taskmanagement.service'
+import { TableComponent } from 'src/app/table/table.component';
+import { TaskpopupComponent } from 'src/app/popup/taskpopup/taskpopup.component';
 
 @Component({
   selector: 'app-taskmanagement',
@@ -16,23 +20,33 @@ export class TaskmanagementComponent implements OnInit {
 
   project:Project[];
   taskmodel = new Task();
+  disableSelect = new FormControl(false);
+
 
   dtOptions: DataTables.Settings = {};
   showModal: boolean;
-  content: string;
-  title: string;
 
 
   show=false;
   showdate=true;
+  isReadOnly=false;
+  hidedate= true;
   msg;
-teamMember=[];
+  selected = 'Queue';
+  optionDisabled:any;
+  teamMember=[];
+
+  isAssign:any;
+  isStart:any;
+  isEnd:any;
+  
   statusControl = new FormControl('', Validators.required);
   projectControl= new FormControl('', Validators.required);
   selectFormControl = new FormControl('', Validators.required);
   options = ['Queue','Assign','Started','Completed','ON hold','Cancelled'];
 
-  minDate: Date;
+
+
 
 
 
@@ -40,10 +54,10 @@ teamMember=[];
     public projectService:ProjectmanagementService,
     public taskService:TaskmanagementService ,
     private toastr: ToastrService,
+    public dialog:MatDialog
     )
    {
-    const currentYear = new Date().getFullYear();
-    this.minDate = new Date(currentYear - 0, 0, 1);
+ 
     }
 
   ngOnInit() {
@@ -53,11 +67,18 @@ teamMember=[];
       processing: true
 
     }
+//assign date
+
+this.isAssign = false;
+this.isStart=false;
+this.isEnd=false;
+
 
     this.fn_ResetForm();
     this.fn_RefreshProjectList();
-    this.fn_RefreshTaskList()
-  }
+    this.fn_RefreshTaskList();
+
+   }
 
   fn_ResetForm(form?:NgForm)
   {
@@ -68,6 +89,8 @@ teamMember=[];
         projectName:"",
         teamMember:"",
         taskStatus:"",
+        createdOn:null,
+        assignOn:null,
         startOn:null,
         endOn:null,
       }
@@ -90,18 +113,35 @@ teamMember=[];
   }
   Fn_AddTask()
   {
+
+    this.fn_ResetForm();
+this.selected = "Queue";
+    this.isReadOnly = false;
+
     $("#show_content").click(function () {
+    
       $("#hide_content,#table-content").show();
+      var elmnt = document.getElementById("btn_save");
+      elmnt.scrollIntoView();
+
     })
+
     this.show = true;
+
 
   }
   fn_Save(form:NgForm)
-  {
+  {      
+    this.taskmodel.taskStatus = this.selected;
+
     if (form.value._id == undefined || form.value._id == '' )
     {
-      this.taskmodel = form.value;
 
+      this.taskmodel = form.value;
+      this.taskmodel.taskStatus = this.selected
+      setTimeout(function () {
+        this.taskmodel.createdOn = new Date()
+      }, 3000);
 
       this.taskService.postTask( this.taskmodel).subscribe((data) => {
 
@@ -109,7 +149,7 @@ teamMember=[];
         this.fn_ResetForm();
 
         console.log("The data is", data);
-        this.toastr.success("Project Added Successguuly", "Your Request has sent !!!",
+        this.toastr.success(" OK","Task Added Successfully", 
           {
             timeOut: 2000,
             progressAnimation: 'increasing',
@@ -129,72 +169,211 @@ teamMember=[];
           })
       });
     }
+    else
+    {
+        this.taskService.putTask( this.taskmodel).subscribe((res) => {
+
+           console.log(res);
+          this.fn_RefreshTaskList();
+          $("#hide_content").hide();
+
+          this.toastr.success("OK","Task Updated Successfully", 
+            {
+              timeOut: 2000,
+              progressAnimation: 'increasing',
+
+            })
+            this.fn_ResetForm();
+            this.fn_RefreshProjectList();
+        },
+          (error) => {
+            this.msg = JSON.stringify(error.error);
+            this.toastr.error("Error", this.msg,
+              {
+                timeOut: 4000
+              })
+          });
+
+this.selected ="Queue";
+
+    }
+
+
   }
 
   fn_Select(projectId)
   {
-    console.log("projectId",projectId)
     this.projectService.getOneProjectList(projectId).subscribe((res:any)=>
     {
       while(this.teamMember.length){
         this.teamMember.pop();
       }
       let task =  res.projectMembers
-      console.log(res)
 
       for(let i=0;i<task.length;i++)
       {
         this.teamMember.push(task[i])
       }
-console.log(task)
       this.teamMember.push(res.projectLead)
 
-      console.log(this.teamMember)
     })
   }
 
   fn_Cancel()
   {
     this.show = false;
+    this.fn_ResetForm();
 
+  }
+  fn_Date()
+  {
+  
+    var startDate , assignDate;
+    startDate =  $("#startOn").val() ;
+    assignDate = $("#assignOn").val();
+
+    console.log("startDate",startDate)
+    console.log("assignDate",assignDate);
+              
+    if (assignDate > startDate ) 
+      {
+        alert("Start date should not be less than Assign date");
+      }
   }
   fn_Edit(task:Task) {
-    this.taskmodel = task;
+this.selected = task.taskStatus
+    if(task.taskStatus=="Queue")
+    {         
+      this.taskmodel = task;
+      this.taskmodel.startOn=null;
+      this.taskmodel.endOn=null;
+      this.taskmodel.assignOn=null;
+      
+    }
+
+    else
+    {
+      this.taskmodel = task;
+    }
+
+    this.isReadOnly = true;
     this.show = true;
+           
+   this.fn_Change(this.taskmodel._id,this.taskmodel.assignOn,this.taskmodel.taskStatus)
+    
     $("#hide_content").show();
+    var elmnt = document.getElementById("btn_save");
+    elmnt.scrollIntoView();
   }
-  fn_Change(taskId,taskStatus)
+  fn_Change2(s:any)
+  {
+console.log(s);
+if(s =='Queue' )
 {
 
-  if(taskStatus=='Queue'|| taskStatus=='Cancelled')
-  {
-    this.showdate=false
-  }
-  else
-  {
-    this.showdate=true
+}
+else if(s=="Assign")
+{
+  
+  this.isAssign = true;
+  this.isReadOnly = false;
+
+
+}
+
+else if (s=='Started')
+{
+  this.isAssign = true;
+
+  this.isReadOnly = true;
+
+  this.isStart=true;
+  this.isEnd=false;
+  
+
+ }
+else if (s=='ON hold')
+{
+ 
+  this.isEnd=true;
+
+}
+else if (s=='Completed')
+{
+ 
+  this.isEnd=true;
+
+}
+else if (s=='Cancelled')
+{
+ 
+  this.isEnd=true;
+
+}
+
 
   }
+  fn_Change(taskId,taskDate,taskStatus)
+{
+  if(this.selected=='Queue' )
+  {
+
+  }
+  else if(this.selected=="Assign")
+  {
+    
+    this.isAssign = true;
+
+    if(taskDate=='NA'|| taskDate==null)
+    {
+      this.isReadOnly = false;
+    }
+    else
+    {
+      this.isReadOnly = true;
+    }
+  }
+
+  else if (this.selected=='Started')
+  {
+    this.isAssign = true;
+
+    this.isReadOnly = true;
+
+    this.isStart=true;
+    this.isEnd=false;
+    
+    (document.getElementById("assign") as HTMLOptionElement).disabled = true;
+
+   }
+  else if (this.selected=='ON hold')
+  {
+   
+    this.isEnd=true;
+
+  }
+  else if (this.selected=='Completed')
+  {
+   
+    this.isEnd=true;
+
+  }
+  else if (this.selected=='Cancelled')
+  {
+   
+    this.isEnd=true;
+
+  }
+
 
 }
 fn_View(task:Task)
 {
   this.taskmodel = task;
-
-  this.showModal = true; // Show-Hide Modal Check
-  this.content = "This is content!!"; // Dynamic Data
-  this.title = "This is title!!";    // Dynamic Data
+  let dialogRef = this.dialog.open(TaskpopupComponent,{data:{tasks:this.taskmodel}})
 
 }
 
-fn_Modelshow()
-{
 
-}
-//Bootstrap Modal Close event
-fn_Modelhide()
-{
-  this.showModal = false;
-}
 
 }

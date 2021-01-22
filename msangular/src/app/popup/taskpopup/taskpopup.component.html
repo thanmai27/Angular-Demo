@@ -1,0 +1,107 @@
+<header style="width: 50vw; height:8vh;background-color: cornflowerblue;margin-top: 0px;">
+    <button style="margin-top: 0%;" type="button" class="close" mat-dialog-close >&times;</button>
+
+    <h3 style="color: white;text-align: center;">Task Details</h3>
+
+</header>
+<div style="width:500px">
+
+            
+            
+<div class="container" >
+    <div class="row">
+        <div class="col-md-5">
+            <label>Project Name </label>
+        </div>
+        <div class="col-md-1">:</div>
+
+        <div class="col-md-6">
+            <label>{{data.tasks.projectName}}</label>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <label>Team Member </label>
+        </div>
+        <div class="col-md-1">:</div>
+
+        <div class="col-md-6">
+            <label>{{data.tasks.teamMember}}</label>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <label>Task Status</label>
+        </div>
+        <div class="col-md-1">:</div>
+
+        <div class="col-md-6">
+            <label>{{data.tasks.taskStatus}}</label>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <label>Created On </label>
+        </div>
+        <div class="col-md-1">:</div>
+
+        <div class="col-md-6">
+            <label>{{data.tasks.createdOn|date:'medium'}}</label>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <label>Assign On </label>
+        </div>
+        <div class="col-md-1">:</div>
+
+        <div class="col-md-6">
+            <label>{{data.tasks.assignOn==null?'-NA-':data.tasks.assignOn|date:'medium'}}</label>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <label>Start Date </label>
+        </div>
+        <div class="col-md-1">:</div>
+
+        <div class="col-md-6">
+            <label>{{data.tasks.startOn==null?'-NA-':data.tasks.startOn|date:'medium'}}</label>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <label>End Date </label>
+        </div>
+        <div class="col-md-1">:</div>
+
+        <div class="col-md-6">
+            <label>{{data.tasks.endOn==null?'-NA-':data.tasks.endOn|date:'medium'}}</label>
+
+        </div>
+    </div>
+</div>
+           
+
+
+     
+    
+</div>
+<hr>
+    <div mat-dialog-actions>
+        <button style="margin-left: 80%; width:100px" class="btn btn-danger" mat-dialog-close >Close</button>
+     </div>
+
+

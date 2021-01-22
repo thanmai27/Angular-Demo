@@ -4,6 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Project } from '../model/project.model';
 import { ProjectmanagementService } from '../shared/projectmanagement.service';
+import { TaskmanagementService } from '../shared/taskmanagement.service';
 
 
 
@@ -16,9 +17,7 @@ export class TableComponent implements OnInit {
 
   project:Project[];
 
-  showModal: boolean;
-content: string;
-title: string;
+
 
 
   displayedColumns: string[] = ['projectName', 'projectState', 'projectLead', 'createdOn','actions'];
@@ -36,7 +35,7 @@ title: string;
       this.dataSource.sort = value;
     }
   }
-  constructor(public projectService:ProjectmanagementService) {
+  constructor(public projectService:ProjectmanagementService, public taskService:TaskmanagementService ) {
 
 
   }
@@ -44,6 +43,8 @@ title: string;
   ngOnInit() {
 
         this.getAllProject();
+  
+        
   }
 
   public getAllProject()
@@ -68,15 +69,8 @@ title: string;
   {
     alert("Edit")
   }
-  show()
-  {
-    this.showModal = true; // Show-Hide Modal Check
-    this.content = "This is content!!"; // Dynamic Data
-    this.title = "This is title!!";    // Dynamic Data
+  fn_getData(data){
+    alert("Hello Click function."+data);
   }
-  //Bootstrap Modal Close event
-  hide()
-  {
-    this.showModal = false;
-  }
+
 }
