@@ -165,8 +165,6 @@ this.pp =false;
     this.isAssign=false;
     this.isStart=false;
     this.isEnd=false;
-    this.isCancel= false;
-
 
 
   }
@@ -174,9 +172,6 @@ this.pp =false;
   {   
     console.log(form.value)   
     this.taskmodel.taskStatus = this.selected;
-    setTimeout(function () {
-      this.taskmodel.createdOn = new Date()
-    }, 3000);
     if (form.value._id == undefined || form.value._id == '' )
     {
 
@@ -187,7 +182,9 @@ this.pp =false;
       this.taskService.postTask( this.taskmodel).subscribe((data) => {
 
         this.fn_RefreshTaskList();
-        this.fn_ResetForm();
+        setTimeout(()=>{     
+           window.location.reload() ; 
+        },500)
 
         console.log("The data is", data);
         this.toastr.success(" OK","Task Added Successfully", 
@@ -196,10 +193,12 @@ this.pp =false;
             progressAnimation: 'increasing',
 
           })
+
+
           $("#hide_content").hide();
 
 
-     // window.location.reload()
+     
 
       }, (error) => {
         this.msg = JSON.stringify(error.error);
@@ -236,7 +235,6 @@ this.pp =false;
               
 
             })
-            this.fn_ResetForm();
             setTimeout(()=>{ window.location.reload();},100)
            
         },
@@ -284,6 +282,7 @@ this.pro_id = projectId;
 
   fn_Edit(task:Task) {
     this.pp =true;
+    this.selected = task.taskStatus;
 
  console.log(task)
     setTimeout(()=>{window.scrollTo(0, 500);},100)
@@ -316,102 +315,124 @@ this.teamMember.push(task.teamMember)
     window.scrollTo(0, 500);
   }
 
-  fn_Change2(s:any)
-  {
-   
-    console.log(s);
-
-       
+  
+fn_Change2(s:any)
+{
  
-    if(s =='Queue' )
+  console.log(s);
+
+     
+
+  if(s =='Queue' )
+  {
+    this.isAssign = true;
+    this.isStart=false;
+    this.isEnd=false;
+    this.isCancel= false;
+
+   
+    this.isReadOnly=true;
+    
+    this.options = ['Queue','Assign','Cancelled'];
+
+  }
+  else if(s=="Assign")
+  {
+    this.options = ['Assign','Started','ON hold','Cancelled'];
+    this.taskmodel.startOn =null;
+
+    if(this.taskmodel.assignOn== null)
     {
       this.isAssign = true;
+      this.isReadOnly = false;
       this.isStart=false;
       this.isEnd=false;
-     
-      this.isReadOnly=true;
-      
-      this.options = ['Queue','Assign','Cancelled'];
+      this.isCancel= false;
 
     }
-    else if(s=="Assign")
+    else
     {
-      this.options = ['Assign','Started','ON hold','Cancelled'];
-
-      if(this.taskmodel.assignOn== null)
-      {
-        this.isAssign = true;
-        this.isReadOnly = false;
-        this.isStart=false;
-        this.isEnd=false;
-      }
-      else
-      {
-        this.isAssign = true;
-        this.isReadOnly = true;
-        this.isStart=false;
-        this.isEnd=false;
-      }
-    
-
-    }
-
-    else if (s=='Started')
-    {
-      this.options = ['Started','Completed','ON hold','Cancelled'];
-
-      this.isStart=true;
-
       this.isAssign = true;
-
       this.isReadOnly = true;
-
+      this.isStart=false;
       this.isEnd=false;
-
-      // if(this.taskmodel.startOn== null)
-      // {
-      //   this.startReadOnly=false;
-        
-      // }
-      // else
-      // {
-      //           this.startReadOnly=true;
-
-
-      // }
-
+      this.isCancel= false;
 
     }
-    else if (s=='ON hold')
-    {
-    
-      this.isEnd=true;
-      this.isStart=true;
-      this.options = ['Started','Completed','ON hold','Cancelled'];
+  
 
-this.taskmodel.endOn = null;
+  }
+
+  else if (s=='Started')
+  {
+    this.options = ['Assign','Started','ON hold','Cancelled','Completed'];
+
+
+    this.isStart=true;
+
+    this.isAssign = true;
+
+    this.isReadOnly = true;
+// this.startReadOnly=false;
+    this.isEnd=false;
+    this.isCancel= false;
+
+
+    if(this.taskmodel.startOn== null)
+    {
+      this.startReadOnly=false;
+      
     }
-    else if (s=='Completed')
+    else if(this.taskmodel.startOn!=null &&this.taskmodel.taskStatus=="Started")
     {
-    
-      this.isEnd=true;
-      this.startReadOnly=true;
-
+           this.startReadOnly=true;
+           this.isReadOnly = false;
+      
 
     }
-    else if (s=='Cancelled')
+    else
     {
-      this.options = ['Cancelled'];
-
-      this.isCancel= true;
-
-      this.startReadOnly=true;
+              this.startReadOnly=true;
 
 
     }
 
 
   }
+  else if (s=='ON hold')
+  {
+  
+    this.isEnd=true;
+    this.isStart=true;
+    this.isCancel= false;
+
+    this.options = ['Started','Completed','ON hold','Cancelled'];
+
+this.taskmodel.endOn = null;
+  }
+  else if (s=='Completed')
+  {
+  
+    this.isEnd=true;
+    this.isCancel= false;
+
+    this.startReadOnly=true;
+
+
+  }
+  else if (s=='Cancelled')
+  {
+    this.taskmodel.endOn = null;
+    this.options = ['Cancelled'];
+    this.isCancel= true;
+    this.startReadOnly=true;
+    this.isEnd=false;
+
+  }
+
+
+}
+
 
 fn_View(task:Task)
 {
@@ -419,16 +440,7 @@ fn_View(task:Task)
   // this.selected =  task.taskStatus;
   // this.teamMember = [];
   // this.teamMember.push(task.teamMember);
-  // if(task.taskStatus==="Completed" || task.taskStatus==="Cancelled")
-  // {
-  //  $("#hide_content").hide();
 
-  // }
-  // else{
-  //   $("#hide_content").show();
-
-  // }
-// this.taskService.getchange(task._id).subscribe((data)=>console.log(data))
   let dialogRef = this.dialog.open(TaskpopupComponent,{data:{tasks:task}})
 
 }

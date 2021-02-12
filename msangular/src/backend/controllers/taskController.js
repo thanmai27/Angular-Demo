@@ -103,6 +103,7 @@ router.get('/changes/:taskId', async(req, res) => {
 })
 
 
+
 router.post('/', async(req, res) => {
 
     const { error } = validate_Task(req.body);
@@ -146,28 +147,87 @@ router.post('/', async(req, res) => {
     )
 
     
-    if (!error) {
-    
-  if(task.taskStatus=="Completed"&&(task.assignOn==null||ask.assignOn=='')&&(task.startOn==null||task.assignOn==''))
-  {
-      res.status(400).send("You cannot Complete the project without Start date and Assign date")
-  }
-      else{
-        await task.save();
-        console.log(req.body)
+    if (!error)
+     {
+       await task.save();
         res.send(task);
-         taskchane.save();
-      }
-      
-      
-       
+        taskchane.save(); 
 
-    } else {
+    } else 
+    {
         res.status(404).send("Failed to send data")
     }
 
 
 })
+
+
+// router.post('/', async(req, res) => {
+
+  
+// try
+// {
+
+//     let task = new Task({
+//         projectName: req.body.projectName,
+//         teamMember: req.body.teamMember,
+//         createdBy: req.body.createdBy,
+//         modifiedBy:req.body.modifiedBy== undefined||'' ? null :req.body.modifiedBy,
+//         taskStatus: req.body.taskStatus,
+//         createdOn: Date.now(),
+//         assignOn:req.body.assignOn== undefined||'' ? null :req.body.assignOn,
+//         startOn: req.body.startOn== undefined||'' ? null : req.body.startOn ,
+//         holdOn: req.body.holdOn== undefined||'' ? null : req.body.holdOn,
+//         endOn: req.body.endOn== undefined||'' ? null :req.body.endOn ,
+//         cancelledOn: req.body.cancelledOn== undefined||'' ? null : req.body.cancelledOn,
+//         taskName:req.body.taskName
+
+
+//     });
+
+
+//     let taskchane = new Taskchanges(
+//         {
+//             taskId:task._id,
+//             state:task.taskStatus,
+//             Date:Date.now(),
+//             currentStatus:"NA",
+//             modifiedBy: "NA",
+//             modifiedOn:Date.now(),
+
+//         })
+
+
+//         if(task.taskStatus=="Completed"&&task.assignOn==null&&task.startOn==null)
+//             {
+//                 res.status(400).send("Start date and Assign date are required")
+//             }
+//         else if(task.assignOn==null&&task.startOn!=null)
+//             {
+//                 res.status(400).send("You cannot set start date without Assign date")
+
+//             }
+//         else
+//             {
+//                     await task.save();
+//                     res.send(task);
+//                     taskchane.save();
+//             }
+      
+      
+      
+// }
+// catch (error) {
+//     console.log(error);
+// }
+
+    
+    
+   
+
+    
+
+// })
 
 
 router.put('/:id', (req, res) => {
@@ -226,6 +286,7 @@ router.put('/:id', (req, res) => {
             console.log("EndDate must be greater than Start Date")
             res.status(400).send("end date must be greater than  start date")
         }
+   
         else if(task.assignOn == null&&task.startOn!==null)
         {
             console.log("EndDate must be greater than Start Date")

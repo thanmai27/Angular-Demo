@@ -39,7 +39,6 @@
                                <td>{{task.createdBy}}</td>
 
                                 <td>{{task.createdOn|date:'medium'}}</td>
-                           
                                 <td>
 
                                     <!-- <button id="btnedit" [disabled]="task.taskStatus=='Completed'||task.taskStatus=='Cancelled'" class="btn btn-primary" style="background-color: rgb(211, 21, 211);width: 80px;border: transparent;margin-left: 3px;" (click)="fn_Edit(task)"> Edit</button>
@@ -80,7 +79,7 @@
     
                     <div class="row" id="row1">
                         <div class="col-md-2">
-                            <label>Project</label>
+                            <label>Project<span style="color: red;">*</span></label>
                         </div>
                         <div class="col-md-4" class="projectname" >
                             <mat-form-field appearance="fill" >
@@ -96,7 +95,7 @@
                             </mat-form-field>
                         </div>
                         <div class="col-md-2">
-                            <label>Team Memeber</label>
+                            <label>Team Memeber<span style="color: red;">*</span></label>
                         </div>
                         <div class="col-md-4">
                             <mat-form-field appearance="fill">
@@ -118,13 +117,13 @@
     
                     <div class="row" id="row2">
                         <div class="col-md-2">
-                            <label>created By</label>
+                            <label>created By<span style="color: red;">*</span></label>
 
                         </div>
                         <div class="col-md-4">
                             <mat-form-field color="accent" appearance="fill" >
 
-                            <input  matInput type="text"  [disabled]="pp" id="createdBy" name="createdBy" [(ngModel)]="taskmodel.createdBy" >
+                            <input  matInput type="text"  [disabled]="pp" id="createdBy" name="createdBy" [(ngModel)]="taskmodel.createdBy" required="true"  >
                             </mat-form-field>
                         </div>
 
@@ -142,7 +141,7 @@
                
                     <div class="row" id="row3">
                         <div class="col-md-2">
-                            <label>Status</label>
+                            <label>Status<span style="color: red;">*</span></label>
                         </div>
                         <div class="col-md-4">
                           
@@ -157,7 +156,7 @@
     
                         </div>
                         <div class="col-md-2" *ngIf="this.isAssign" >
-                            <label>Assign Date</label>
+                            <label>Assign Date <span style="color: red;">*</span></label>
                         </div>
                         <div class="col-md-4" *ngIf="this.isAssign" >
                             <mat-form-field color="accent" appearance="fill" >
@@ -172,7 +171,7 @@
     
                     <div class="row" id="row4" >
                         <div class="col-md-2" *ngIf="this.isStart">
-                            <label>Start Date</label>
+                            <label>Start Date <span style="color: red;">*</span></label>
                         </div>
                         <div class="col-md-4" *ngIf="this.isStart">
                             <mat-form-field color="accent" appearance="fill">
@@ -186,7 +185,7 @@
                         </div>
                       
                         <div class="col-md-2" *ngIf="this.isEnd">
-                            <label>End Date</label>
+                            <label>End Date <span style="color: red;">*</span></label>
                         </div>
                         <div class="col-md-4" *ngIf="this.isEnd">
                             <mat-form-field color="accent" appearance="fill">
@@ -202,7 +201,7 @@
 
                     <div class="row" id="row5" >
                         <div class="col-md-2" *ngIf="this.isCancel">
-                            <label>Cancelled Date</label>
+                            <label>Cancelled Date<span style="color: red;">*</span></label>
                         </div>
                         <div class="col-md-4" *ngIf="this.isCancel">
                             <mat-form-field color="accent" appearance="fill">
@@ -221,7 +220,7 @@
 
                     <div  class="row" id="row6" >
                           <div class="col-md-2">
-                            <label>Task</label>
+                            <label>Task <span style="color: red;">*</span></label>
                         </div>
                         <div class="col-md-10">
                             <mat-form-field class="example-full-width">
