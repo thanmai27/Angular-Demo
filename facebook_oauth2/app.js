@@ -73,13 +73,16 @@ app.get('/', (req, res) => {
       return res.send(`
         <html>
           <body>Hello.. ${data.name}.You are successfully logged!!!!
+          <img src= "http://graph.facebook.com/${data.id}/picture?type=large&redirect=true&width=150&height=150">
+
           <p> your user id is :${data.id}</p>
           <p> your first name is :${data.first_name}</p>
           <p> your last name is :${data.last_name}</p>
           <p> your email :${data.email}</p>
           <p> your email :${data.gender}</p>
 
-       
+
+
           <a href=" https://www.facebook.com/logout.php?next=${process.env.redirect_uri}&access_token=${accessToken}">Logout</a>
 
           </body>

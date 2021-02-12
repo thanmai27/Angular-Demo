@@ -10,8 +10,10 @@ import {MAT_DIALOG_DATA} from '@angular/material'
 export class TaskpopupComponent implements OnInit {
 
   constructor( @Inject(MAT_DIALOG_DATA) public data:any ) { }
+datastring = JSON.stringify(this.data)
 
   ngOnInit() {
+
   }
 
 }

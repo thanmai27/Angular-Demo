@@ -12,10 +12,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ToastrModule } from 'ngx-toastr';
 import { DataTablesModule } from 'angular-datatables';
+import { QRCodeModule } from 'angular2-qrcode';
 
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { DatePipe } from '@angular/common'
 
 
 import { MsalModule, MsalInterceptor, MsalGuard } from '@azure/msal-angular';
@@ -31,8 +33,8 @@ import { UserManagementComponent } from './home/user-management/user-management.
 import { ProjectmanagementComponent } from './home/projectmanagement/projectmanagement.component';
 import { MaterialModule } from './material/material.module';
 import { TableComponent } from './table/table.component';
-import { TaskmanagementComponent } from './home/taskmanagement/taskmanagement.component';
 import { TaskpopupComponent } from './popup/taskpopup/taskpopup.component';
+import { TaskmanagementComponent } from './home/taskmanagement/taskmanagement.component';
 
 @NgModule({
   declarations: [
@@ -45,8 +47,8 @@ import { TaskpopupComponent } from './popup/taskpopup/taskpopup.component';
     UserManagementComponent,
     ProjectmanagementComponent,
     TableComponent,
-    TaskmanagementComponent,
     TaskpopupComponent,
+    TaskmanagementComponent,
 
   ],
   entryComponents:[TaskpopupComponent],
@@ -59,10 +61,14 @@ import { TaskpopupComponent } from './popup/taskpopup/taskpopup.component';
     HttpClientModule,
     FormsModule,ReactiveFormsModule,
     ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+  
+      preventDuplicates: true,
+    }),
     DataTablesModule,
     NgMultiSelectDropDownModule.forRoot(),
     NgSelectModule,
-
+    QRCodeModule,
 
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger', // set defaults here
@@ -88,8 +94,10 @@ import { TaskpopupComponent } from './popup/taskpopup/taskpopup.component';
     {path:'taskmanagement',component:HomeComponent,//canActivate:[AuthGuard],
     children:[{path:'',component:TaskmanagementComponent}]},
 
+
       {path:'upload', component:BlobComponent},
       {path:'table', component:TableComponent},
+
 
 
 
@@ -128,7 +136,7 @@ import { TaskpopupComponent } from './popup/taskpopup/taskpopup.component';
     provide: HTTP_INTERCEPTORS,
     useClass: MsalInterceptor,
     multi: true
-  }],
+  },DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

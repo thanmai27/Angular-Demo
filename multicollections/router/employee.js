@@ -8,7 +8,7 @@ const {Position} = require('../model/positionmodel');
 
 const {Gm} =  require('../model/gmmodel');
 
-outer.get('/gm',(req,res)=>
+router.get('/gm',(req,res)=>
 {
    
  Gm.find((err,doc)=>
@@ -47,14 +47,27 @@ router.post('/employees',async (req,res)=>
 {
 
     let ps = new Position (
-        { position:req.body.position}
+        {   position:req.body.position,
+            taskName: req.body.taskName,
+            assignTo:req.body.assignTo,
+            currentState:req.body.currentState,
+            projectName:req.body.projectName,
+            createdBy:req.body.createdBy,
+            createdOn:req.body.createdOn
+        }
     );
     
     let employee = new Employee (
         {
             name:req.body.name,
             age:req.body.age,
-            position:ps
+            position:ps,
+            taskName:ps,
+            assignTo:ps,
+            currentState:ps,
+            projectName:ps,
+            createdBy:ps,
+            createdOn:ps
         }
     );
 
@@ -69,7 +82,7 @@ router.post('/employees',async (req,res)=>
         }
         else
         {
-            res.status(404).send("Cannot Post DEatils",err);
+            res.status(404).send(err);
 
         }
     })
@@ -93,16 +106,29 @@ router.post('/employees',async (req,res)=>
    })
 })
 */
-router.put('/employees/:positioon',(req,res)=>{
+router.put('/employees/:id',(req,res)=>{
 
-var ps = {position:req.body.position};
-
+var ps = {
+    position:req.body.position,
+    taskName: req.body.taskName,
+    assignTo:req.body.assignTo,
+    currentState:req.body.currentState,
+    projectName:req.body.projectName,
+    createdBy:req.body.createdBy,
+    createdOn:req.body.createdOn};
+console.log(ps)
     var employee ={
         name:req.body.name,
         age:req.body.age,
-        position:ps
+        position:ps,
+        taskName:ps,
+        assignTo:ps,
+        currentState:ps,
+        projectName:ps,
+        createdBy:ps,
+        createdOn:ps
     };
-var c =req.params.position
+var c =req.params.id
   Employee.findOneAndUpdate(c,{$set:employee},{new:true},(err,doc)=>
     {
         if(!err)

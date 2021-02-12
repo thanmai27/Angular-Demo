@@ -1,4 +1,5 @@
 import { Component, OnInit,AfterViewInit ,ViewChild} from '@angular/core';
+import { FormControl } from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -16,8 +17,11 @@ import { TaskmanagementService } from '../shared/taskmanagement.service';
 export class TableComponent implements OnInit {
 
   project:Project[];
+  disableSelect = new FormControl(false);
+  selected = 'Queue';
 
-
+changes = [];
+  options = ['Queue','Assign','Started','Completed','ON hold','Cancelled'];
 
 
   displayedColumns: string[] = ['projectName', 'projectState', 'projectLead', 'createdOn','actions'];
@@ -42,7 +46,15 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
 
+    setTimeout(function(){
+      $('table').DataTable( {
+      responsive: true,
+      "lengthMenu": [5, 10, 25,50]
+      } );
+      }, 1000);
+      
         this.getAllProject();
+        this.taskService.getTaskChangesList().subscribe((data:any)=>{    this.changes = data})
   
         
   }
@@ -72,5 +84,17 @@ export class TableComponent implements OnInit {
   fn_getData(data){
     alert("Hello Click function."+data);
   }
+  fn_Change2(s:any)
+  {
+   
+    
+    let index = this.options.findIndex(x => x === s);
+    console.log(index);
+    for(let i=0;i<=index;i++)
+    {
+      delete this.options[index];
 
+    }
+   console.log(this.options) 
+  }
 }

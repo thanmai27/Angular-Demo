@@ -9,11 +9,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 
 
 
 
 const MaterialComponents = [
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
   MatButtonModule,
   MatSelectModule,
   MatFormFieldModule,
@@ -24,7 +30,8 @@ const MaterialComponents = [
   MatIconModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatDialogModule
+  MatDialogModule,
+  MatListModule,
 ]
 
 

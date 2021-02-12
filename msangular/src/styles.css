@@ -1,9 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-body {
-    padding: 20px;
-}
+
+
 
 html,
 body {
@@ -12,5 +10,8 @@ body {
 
 body {
     margin: 0;
+    padding: 0px;
+
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+

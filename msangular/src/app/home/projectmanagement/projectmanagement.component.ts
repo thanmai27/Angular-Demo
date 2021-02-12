@@ -42,6 +42,13 @@ constructor(public userService: UserManagementService,public projectService:Proj
 
   ngOnInit()
   {
+      
+    setTimeout(function(){
+      $('table').DataTable( {
+      responsive: true,
+      "lengthMenu": [5, 10, 25,50]
+      } );
+      }, 100);
 
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -137,6 +144,8 @@ constructor(public userService: UserManagementService,public projectService:Proj
   }
   Fn_AddUser()
   {
+    setTimeout(()=>{      window.scrollTo(0, 500);    },100)
+
     this.fn_ResetForm();
     $("#show_content").click(function () {
       $("#hide_content,#table-content").show();
@@ -240,6 +249,8 @@ fn_Change(userId,userState)
 
 fn_Map(project:Project)
 {
+  setTimeout(()=>{      window.scrollTo(0, 500);    },100)
+
   debugger;
   // this.usermodel.isExisitngMember = false;
   this.isEditOrMap=false;
@@ -258,6 +269,8 @@ console.log("project map",project)
 
 fn_Edit(project:Project)
 {
+  setTimeout(()=>{      window.scrollTo(0, 500);    },100)
+
   debugger;
   // this.usermodel.isExisitngMember = true;
   this.isEditOrMap=true;
@@ -278,6 +291,8 @@ fn_Edit(project:Project)
 }
 fn_View(project:Project)
 {
+  setTimeout(()=>{      window.scrollTo(0, 500);    },100)
+
   this.projectmodel = project;
 
   this.hide=true;

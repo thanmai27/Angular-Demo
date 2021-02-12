@@ -6,6 +6,8 @@ import { User } from 'src/app/shared/usermanagement.model';
 import { ToastrService } from 'ngx-toastr';
 
 
+
+
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',
@@ -32,6 +34,7 @@ export class UserManagementComponent implements OnInit {
 
   ngOnInit() {
 
+ 
     this.Fn_refreshUserList();
     this.Fn_resetForm();
   }
@@ -66,6 +69,8 @@ Fn_resetForm(form?:NgForm)
 
 
   Fn_AddUser() {
+    setTimeout(()=>{      window.scrollTo(0, 600);    },100)
+
 this.isReadOnly = false;
    this.show = true;
 
@@ -85,6 +90,9 @@ this.isReadOnly = false;
   }
 
   Fn_Edit(user: User) {
+
+    setTimeout(()=>{      window.scrollTo(0, 600);    },100)
+
     console.log(user);
     this.usermodel = user;
     this.show = true;
